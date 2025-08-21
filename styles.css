@@ -1,0 +1,7 @@
+.bg-background-light, .bg-white {
+  background-color: #f9fafc !important;
+}
+
+.dark\:bg-background-dark:is(.dark *), .dark\:bg-codeblock:is(.dark *) {
+  background-color: #1a202c !important;
+}
