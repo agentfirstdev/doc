@@ -27,11 +27,11 @@
       {
         "group": "API",
         "pages": [
-          "authentication",
           "search",
           "browser",
+          "authentication",
           "geotargeting",
-          "queuing",
+          "scheduling",
           {
             "group": "Reference",
             "icon": "book",

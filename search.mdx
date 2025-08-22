@@ -15,16 +15,16 @@ import Json from '/snippets/search/json.mdx';
 All API requests are authenticated with [Bearer tokens](authentication) and optionally routed with
 [geotargeting parameters](geotargeting).
 
-Searches are performed in real time by default or can be queued for [later retrieval](queuing).
+Searches are performed in real time by default or can be queued for [later retrieval](scheduling).
 Real-time searches take an average of a few seconds but may require multiple retries, in which case
 up to **120 seconds** is allocated per API request.
 
-### Parameters
+### Search parameters
 
-In addition to the geotargeting and queuing parameters mentioned above, required and optional search
-parameters can be appended with a
+Besides the [geotargeting and scheduling parameters](#usage) linked to above, required and optional
+search parameters can be added in a
 [standard query string](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL#parameters).
-The keys and values that **Agent First** supports are as follows:
+The keys and values **Agent First** supports are as follows:
 
 | Key           | Required | Value                                                                                                                                                                                                                                                                                                                                                      |
 | :------------ | :------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -55,7 +55,7 @@ If you set the output to JSON, your results will be parsed into nested objects.
   <Json />
 </Accordion>
 
-## More examples
+## Additional examples
 
 ```bash
 $ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \

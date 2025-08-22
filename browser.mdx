@@ -7,24 +7,24 @@ description: Unblock difficult-to-crawl websites.
 
 ## Usage
 
-**Agent First’s** browser service surfs intelligently on your behalf, rendering JavaScript, solving
-[CAPTCHAs](https://www.ibm.com/topics/captcha), and retrying failed requests along the way. The
-service has a RESTful interface that accepts `GET` requests at
+**Agent First’s** browser service navigates intelligently on your behalf, rendering JavaScript,
+solving [CAPTCHAs](https://www.ibm.com/topics/captcha), and retrying failed requests. The service
+has a RESTful interface that accepts `GET` requests at
 **https://&zwj;api.agentfirst.dev/browser**.
 
 All API requests are authenticated with [Bearer tokens](authentication) and optionally routed with
 [geotargeting parameters](geotargeting).
 
-Webpages are retrieved in real time by default or can be queued for [later retrieval](queuing). Up
-to **120 seconds** is allotted per real-time API request to accommodate CAPTCHA-solving, multiple
+Webpages are retrieved in real time by default or can be queued for [later retrieval](scheduling).
+Up to **120 seconds** is allotted per real-time API request to accommodate CAPTCHA-solving, multiple
 retries, and other mitigations.
 
-### Parameters
+### Request parameters
 
-In addition to the geotargeting and queuing parameters mentioned above, required and optional
-browsing parameters can be appended with a
+Besides the [geotargeting and scheduling parameters](#usage) linked to above, required and optional
+browsing parameters can be added in a
 [standard query string](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL#parameters).
-The keys and values that **Agent First** supports are as follows:
+The keys and values **Agent First** supports are as follows:
 
 | Key           | Required | Value                                                                                                                                                                                                                                               |
 | :------------ | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -60,7 +60,7 @@ The API will return JSON that contains an alphabetized array of device names:
 
 Pages are returned in their rendered HTML.
 
-## More examples
+## Additional examples
 
 ### Device emulation
 
