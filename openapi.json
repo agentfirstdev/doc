@@ -108,7 +108,7 @@
         }, {
           "name": "subaccount",
           "in": "query",
-          "description": "Any unique identifier of up to 255 characters (regardless of character encoding); **Agent First** will bill requests made from subaccounts separately.",
+          "description": "Any unique identifier of up to 255 characters (regardless of character encoding); we’ll bill requests made from subaccounts separately.",
           "schema": {
             "type": "string"
           }
