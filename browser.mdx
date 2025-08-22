@@ -34,7 +34,10 @@ The keys and values **Agent First** supports are as follows:
 | :------------ | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `url`         | ✅       | The URL of the page to browse; any unsafe characters require [URL encoding](https://developer.mozilla.org/en-US/docs/Glossary/Percent-encoding)                                                                                                     |
 | `device`      | ⬜       | The name as returned by the [devices endpoint](#device-emulation) of the device to emulate browsing on (these names are case insensitive but must include form- or URL-encoded spaces and punctuation marks); device emulation is unused by default |
+| `ip`          | ⬜       | The type of IP address to browse from, `residential`, `isp`, or `datacenter`; `residential` is the default IP type                                                                                                                                  |
+| `format`      | ⬜       | The HTML format to output to, `rendered` or `raw` (see [details below](#response-format)); `rendered` is the default format                                                                                                                         |
 | `expiration`  | ⬜       | The maximum age of cached content in days to accept, where `0` will disable caching; `1` is the default number of days                                                                                                                              |
+| `delay`       | ⬜       | The number of seconds to inject before snapshotting the browsed content, from `.1` to `10` inclusive; no delay is injected by default                                                                                                               |
 | `session`     | ⬜       | Any unique identifier of up to 255 characters (regardless of character encoding); **Agent First** will make best efforts to route requests in the same session to the same egress node                                                              |
 | `subaccount`  | ⬜       | Any unique identifier of up to 255 characters (regardless of character encoding); **Agent First** will bill requests made from subaccounts separately                                                                                               |
 
@@ -60,7 +63,7 @@ The API will return JSON that contains an alphabetized array of device names:
 ]
 ```
 
-### Response specification
+### Response format
 
 Pages are returned in their rendered HTML.
 
