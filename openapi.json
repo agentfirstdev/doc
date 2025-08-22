@@ -15,7 +15,7 @@
     "/search": {
       "get": {
         "summary": "Results",
-        "description": "Retrieve real-time Google search results or queue results for later retrieval.",
+        "description": "Retrieve Google search results or queue results for later retrieval.",
         "parameters": [{
           "name": "terms",
           "in": "query",
@@ -189,7 +189,7 @@
     "/browser": {
       "get": {
         "summary": "Content",
-        "description": "Retrieve difficult-to-crawl webpage content or queue content for later retrieval.",
+        "description": "Retrieve webpage content or queue content for later retrieval.",
         "responses": {
           "200": {
             "description": "The page content or a job identifier.",
