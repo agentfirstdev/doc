@@ -10,7 +10,7 @@
   "logo": {
     "light": "/logo/light.png",
     "dark": "/logo/dark.png",
-    "href": "https://agentfirst.dev/"
+    "href": "https://doc.agentfirst.dev/"
   },
   "favicon": "/favicon.ico",
   "css": [
