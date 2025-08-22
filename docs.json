@@ -88,5 +88,17 @@
       "x": "https://x.com/agentfirstdev"
     }
   },
+  "contextual": {
+    "options": [
+     "copy",
+     "view",
+     "chatgpt",
+     "claude",
+     "perplexity",
+     "mcp",
+     "cursor",
+     "vscode"
+   ]
+  },
   "isWhiteLabeled": true
 }
