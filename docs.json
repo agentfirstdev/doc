@@ -27,11 +27,11 @@
       {
         "group": "API",
         "pages": [
-          "api/authentication",
-          "api/search",
-          "api/browser",
-          "api/geotargeting",
-          "api/queuing",
+          "authentication",
+          "search",
+          "browser",
+          "geotargeting",
+          "queuing",
           {
             "group": "Reference",
             "icon": "book",
@@ -40,16 +40,16 @@
               {
                 "group": "Search",
                 "pages": [
-                  "api/reference/search",
-                  "api/reference/search/results"
+                  "reference/search",
+                  "reference/search/results"
                 ]
               },
               {
                 "group": "Browsing",
                 "pages": [
-                  "api/reference/browser",
-                  "api/reference/browser/content",
-                  "api/reference/browser/devices"
+                  "reference/browser",
+                  "reference/browser/content",
+                  "reference/browser/devices"
                 ]
               }
             ]
@@ -59,7 +59,7 @@
       {
         "group": "Whitelabeling",
         "pages": [
-          "whitelabeling/information"
+          "whitelabeling"
         ]
       }
     ]
