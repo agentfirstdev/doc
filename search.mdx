@@ -2,7 +2,7 @@
 title: Search
 icon: magnifying-glass
 iconType: light
-description: Extract live Google search results.
+description: Extract real-time Google search results.
 ---
 
 import { Reference } from '/snippets/reference.mdx';
@@ -18,9 +18,9 @@ import Json from '/snippets/search/json.mdx';
 All API requests are authenticated with [Bearer tokens](authentication) and optionally routed with
 [geotargeting parameters](geotargeting).
 
-Searches are performed in real time by default or can be queued for [later retrieval](scheduling).
-Real-time searches take an average of a few seconds but may require multiple retries, in which case
-up to **120 seconds** is allocated per API request.
+Searches are performed live by default or can be queued for [later retrieval](scheduling). Live
+searches take an average of a few seconds but may require multiple retries, in which case up to
+**120 seconds** is allocated per API request.
 
 ### Search parameters
 
