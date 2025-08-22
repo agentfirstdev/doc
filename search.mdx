@@ -1,0 +1,68 @@
+---
+title: Search
+icon: magnifying-glass
+iconType: light
+description: Extract live Google search results.
+---
+
+import Json from '/snippets/search/json.mdx';
+
+## Usage
+
+**Agent First’s** search service has a RESTful interface that accepts `GET` requests at
+**https://&zwj;api.agentfirst.dev/search**.
+
+All API requests are authenticated with [Bearer tokens](authentication) and optionally routed with
+[geotargeting parameters](geotargeting).
+
+Searches are performed in real time by default or can be queued for [later retrieval](queuing).
+Real-time searches take an average of a few seconds but may require multiple retries, in which case
+up to **120 seconds** is allocated per API request.
+
+### Parameters
+
+In addition to the geotargeting and queuing parameters mentioned above, required and optional search
+parameters can be appended with a
+[standard query string](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL#parameters).
+The keys and values that **Agent First** supports are as follows:
+
+| Key           | Required | Value                                                                                                                                                                                                                                                                                                                                                      |
+| :------------ | :------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `terms`       | ✅       | The broad or exact word or phrase to query (e.g., `foo bar baz` or `"foo bar baz"`); the terms require [form or URL encoding](https://developer.mozilla.org/en-US/docs/Glossary/Percent-encoding) (with any space character being replaced by a `+` character or `%20` sequence)                                                                           |
+| `serps`       | ⬜       | The number of results pages to retrieve, from `1` to `10` inclusive; `1` is the default count                                                                                                                                                                                                                                                              |
+| `size`        | ⬜       | The number of results per page to retrieve, from `0` to `100` inclusive; page size is unset by default                                                                                                                                                                                                                                                     |
+| `offset`      | ⬜       | The number of initial results to skip, from `0` to `100` inclusive; results aren’t offset by default                                                                                                                                                                                                                                                       |
+| `uule`        | ⬜       | The [proprietary encoded string](https://moz.com/blog/geolocation-the-ultimate-tip-to-emulate-local-search) for emulating the location to search from; if possible, the actual location will be searched from not emulated; location emulation is unused by default                                                                                        |
+| `language`    | ⬜       | The commonly spelled name, [two-letter ISO code](https://www.loc.gov/standards/iso639-2/php/code_list.php), or [Google code](https://www.google.com/advanced_search) of the language to search in (these names and codes are case insensitive but required to include form- or URL-encoded spaces and punctuation marks); the language is unset by default |
+| `format`      | ⬜       | The format to output to, `html` or `json` (see [details below](#response-format)); `html` is the default format                                                                                                                                                                                                                                            |
+| `expiration`  | ⬜       | The maximum age of cached results in days to accept, where `0` will disable caching; `1` is the default number of days                                                                                                                                                                                                                                     |
+| `subaccount`  | ⬜       | Any unique identifier of up to 255 characters (regardless of character encoding); **Agent First** will bill requests made from subaccounts separately                                                                                                                                                                                                              |
+
+### Response format
+
+You can receive search results in their original HTML or as structured JSON.
+
+#### HTML
+
+If you request multiple results pages that don’t feature infinite scrolling, the HTML of each page
+will be separated from the next by an empty line (`\n\n`).
+
+#### JSON
+
+If you set the output to JSON, your results will be parsed into nested objects.
+
+<Accordion icon="code" title="View JSON example">
+  <Json />
+</Accordion>
+
+## More examples
+
+```bash
+$ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
+  'https://api.agentfirst.dev/search?terms=foo+bar+baz&serps=2'
+```
+
+```bash
+$ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
+  'https://api.agentfirst.dev/search?terms=%22foo+bar+baz%22&serps=10&country=us&format=json'
+```
