@@ -23,7 +23,7 @@ Webpages are retrieved in real time by default or can be queued for [later retri
 Up to **120 seconds** is allotted per real-time API request to accommodate CAPTCHA-solving, multiple
 retries, and other mitigations.
 
-### Request parameters
+### Browsing parameters
 
 Besides the [geotargeting and scheduling parameters](#usage) linked above, required and optional
 browsing parameters can be added in a
@@ -48,7 +48,7 @@ content. For a list of supported smartphone and tablet devices, make a request w
 and no parameters to **https://&zwj;api.agentfirst.dev/browser/devices**:
 
 ```bash
-$ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN"            \
+$ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
   'https://api.agentfirst.dev/browser/devices'
 ```
 
@@ -69,7 +69,7 @@ Pages are returned as rendered HTML or in their raw (unrendered) HTML.
 
 ## Additional examples
 
-#### Device emulation
+### Device emulation
 
 ```bash
 $ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
@@ -78,7 +78,7 @@ $ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
   '&device=blackberry+playbook'
 ```
 
-#### Geotargeting
+### Geotargeting
 
 ```bash
 $ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
@@ -88,7 +88,7 @@ $ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
   '&city=nashville'
 ```
 
-#### Cachebusting
+### Cachebusting
 
 ```bash
 $ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
@@ -97,7 +97,7 @@ $ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
   '&expiration=0'
 ```
 
-#### Other parameters
+### Other parameters
 
 ```bash
 $ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
