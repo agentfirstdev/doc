@@ -10,7 +10,7 @@
   "logo": {
     "light": "/logo/light.png",
     "dark": "/logo/dark.png",
-    "href": "https://wip.agentfirst.dev/"
+    "href": "https://agentfirst.dev/"
   },
   "favicon": "/favicon.ico",
   "css": [
@@ -21,33 +21,55 @@
       {
         "group": "Quickstart",
         "pages": [
-          "index",
-          "quickstart",
-          "development"
+          "index"
         ]
       },
       {
         "group": "API",
         "pages": [
-          "search",
-          "browser",
-          "geotargeting",
-          "reference"
+          "api/authentication",
+          "api/search",
+          "api/browser",
+          "api/geotargeting",
+          "api/queuing",
+          {
+            "group": "Reference",
+            "icon": "book",
+            "iconType": "light",
+            "pages": [
+              {
+                "group": "Search",
+                "pages": [
+                  "api/reference/search",
+                  "api/reference/search/results"
+                ]
+              },
+              {
+                "group": "Browsing",
+                "pages": [
+                  "api/reference/browser",
+                  "api/reference/browser/content",
+                  "api/reference/browser/devices"
+                ]
+              }
+            ]
+          }
         ]
       },
       {
         "group": "Whitelabeling",
         "pages": [
-          "essentials/markdown",
-          "essentials/code",
-          "essentials/images",
-          "essentials/reusable-snippets"
+          "whitelabeling/information"
         ]
       }
     ]
   },
   "navbar": {
     "links": [
+      {
+        "label": "Blog",
+        "href": "https://blog.agentfirst.dev/"
+      },
       {
         "label": "Help",
         "href": "mailto:brain@agentfirst.dev"
@@ -65,5 +87,6 @@
       "linkedin": "https://www.linkedin.com/company/agentfirstdev/",
       "x": "https://x.com/agentfirstdev"
     }
-  }
+  },
+  "isWhiteLabeled": true
 }
