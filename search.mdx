@@ -14,11 +14,11 @@ import Json from '/snippets/search/json.mdx';
 
 ## Usage
 
-**Agent First’s** search service delivers all organic and paid Google results reliably, as
+**Agent First's** search service delivers all organic and paid Google results reliably, as
 structured or raw data. The service has a RESTful interface that accepts `GET` requests at
 **https://&zwj;api.agentfirst.dev/search**.
 
-Searches can be localized with [geotargeting parameters](geotargeting). They’re performed live by
+Searches can be localized with [geotargeting parameters](geotargeting). They're performed live by
 default or optionally queued for [later retrieval](scheduling). Live searches take an average of a
 few seconds but may require multiple retries, in which case up to **120 seconds** is allocated per
 API call.
@@ -39,7 +39,7 @@ The keys and values **Agent First** supports are as follows:
 | `terms`       | ✅       | The broad or exact word or phrase to query (e.g., `foo bar baz` or `"foo bar baz"`); the terms require [form or URL encoding](https://developer.mozilla.org/en-US/docs/Glossary/Percent-encoding) (with any space character being replaced by a `+` character or `%20` sequence)                                                                           |
 | `serps`       | ⬜       | The number of results pages to retrieve, from `1` to `10` inclusive; `1` is the default count                                                                                                                                                                                                                                                              |
 | `size`        | ⬜       | The number of results per page to retrieve, from `0` to `100` inclusive; page size is unset by default                                                                                                                                                                                                                                                     |
-| `offset`      | ⬜       | The number of initial results to skip, from `0` to `100` inclusive; results aren’t offset by default                                                                                                                                                                                                                                                       |
+| `offset`      | ⬜       | The number of initial results to skip, from `0` to `100` inclusive; results aren't offset by default                                                                                                                                                                                                                                                       |
 | `uule`        | ⬜       | The [proprietary encoded string](https://moz.com/blog/geolocation-the-ultimate-tip-to-emulate-local-search) for emulating the location to search from; if possible, the actual location will be searched from not emulated; location emulation is unused by default                                                                                        |
 | `language`    | ⬜       | The commonly spelled name, [two-letter ISO code](https://www.loc.gov/standards/iso639-2/php/code_list.php), or [Google code](https://www.google.com/advanced_search) of the language to search in (these names and codes are case insensitive but required to include form- or URL-encoded spaces and punctuation marks); the language is unset by default |
 | `format`      | ⬜       | The format to output to, `html` or `json` (see [details below](#response-format)); `html` is the default format                                                                                                                                                                                                                                            |
@@ -52,7 +52,7 @@ Search results are returned as rendered HTML or structured JSON.
 
 #### HTML
 
-If you request multiple results pages that don’t feature infinite scrolling, the HTML of each page
+If you request multiple results pages that don't feature infinite scrolling, the HTML of each page
 will be separated from the next by an empty line (`\n\n`).
 
 #### JSON

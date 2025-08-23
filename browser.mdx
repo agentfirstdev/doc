@@ -17,12 +17,12 @@ import Subaccount from '/snippets/browser/subaccount.mdx';
 
 ## Usage
 
-**Agent First’s** browser service navigates intelligently on your behalf, rendering JavaScript,
+**Agent First's** browser service navigates intelligently on your behalf, rendering JavaScript,
 solving [CAPTCHAs](https://www.ibm.com/topics/captcha), and retrying failed requests. The service
 has a RESTful interface that accepts `GET` requests at
 **https://&zwj;api.agentfirst.dev/browser**.
 
-Webpages can be localized with [geotargeting parameters](geotargeting). They’re retrieved in real
+Webpages can be localized with [geotargeting parameters](geotargeting). They're retrieved in real
 time by default or optionally queued for [later retrieval](scheduling). Up to **120 seconds** is
 allotted per real-time API call to accommodate CAPTCHA-solving, multiple retries, and other
 mitigations.
