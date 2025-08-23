@@ -5,3 +5,7 @@
 .dark\:bg-background-dark:is(.dark *), .dark\:bg-codeblock:is(.dark *) {
   background-color: #1a202c !important;
 }
+
+#content-area a, #content-area a:visited {
+  color: #4a6de5;
+}
