@@ -6,6 +6,8 @@ description: Unblock difficult-to-crawl websites.
 ---
 
 import { Reference } from '/snippets/reference.mdx';
+import Authentication from '/snippets/authentication.mdx';
+import Url from '/snippets/browser/url.mdx';
 
 <Reference endpoint="browser" />
 
@@ -16,12 +18,13 @@ solving [CAPTCHAs](https://www.ibm.com/topics/captcha), and retrying failed requ
 has a RESTful interface that accepts `GET` requests at
 **https://&zwj;api.agentfirst.dev/browser**.
 
-All API requests are authenticated with [Bearer tokens](authentication) and optionally routed with
-[geotargeting parameters](geotargeting).
+Webpages can be routed with [geotargeting parameters](geotargeting). They’re retrieved in real time
+by default or optionally queued for [later retrieval](scheduling). Up to **120 seconds** is allotted
+per real-time API request to accommodate CAPTCHA-solving, multiple retries, and other mitigations.
 
-Webpages are retrieved in real time by default or can be queued for [later retrieval](scheduling).
-Up to **120 seconds** is allotted per real-time API request to accommodate CAPTCHA-solving, multiple
-retries, and other mitigations.
+<Authentication />
+
+<Url />
 
 ### Browsing parameters
 

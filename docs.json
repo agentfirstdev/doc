@@ -29,7 +29,6 @@
         "pages": [
           "search",
           "browser",
-          "authentication",
           "geotargeting",
           "scheduling",
           {
