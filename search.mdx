@@ -17,7 +17,7 @@ import Json from '/snippets/search/json.mdx';
 **Agent First’s** search service has a RESTful interface that accepts `GET` requests at
 **https://&zwj;api.agentfirst.dev/search**.
 
-Searches can be routed with [geotargeting parameters](geotargeting). They’re performed live by
+Searches can be localized with [geotargeting parameters](geotargeting). They’re performed live by
 default or optionally queued for [later retrieval](scheduling). Live searches take an average of a
 few seconds but may require multiple retries, in which case up to **120 seconds** is allocated per
 API request.
