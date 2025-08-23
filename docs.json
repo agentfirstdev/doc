@@ -14,7 +14,7 @@
   },
   "favicon": "/favicon.ico",
   "css": [
-    "/styles.css"
+    "/style.css"
   ],
   "navigation": {
     "groups": [
