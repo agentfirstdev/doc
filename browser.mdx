@@ -97,12 +97,20 @@ $ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
   '&expiration=0'
 ```
 
-### Other parameters
+### Sticky sessions
 
 ```bash
 $ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
   'https://api.agentfirst.dev/browser'\
   '?url=https://example.com/'\
-  '&session=foo'\
-  '&subaccount=bar'
+  '&session=foo'
+```
+
+### Accounting
+
+```bash
+$ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
+  'https://api.agentfirst.dev/browser'\
+  '?url=https://example.com/'\
+  '&subaccount=foo'
 ```
