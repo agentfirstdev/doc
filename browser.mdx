@@ -20,7 +20,7 @@ has a RESTful interface that accepts `GET` requests at
 
 Webpages can be localized with [geotargeting parameters](geotargeting). They’re retrieved in real
 time by default or optionally queued for [later retrieval](scheduling). Up to **120 seconds** is
-allotted per real-time API request to accommodate CAPTCHA-solving, multiple retries, and other
+allotted per real-time API call to accommodate CAPTCHA-solving, multiple retries, and other
 mitigations.
 
 <Authentication />
@@ -42,8 +42,8 @@ The keys and values **Agent First** supports are as follows:
 | `format`      | ⬜       | The HTML format to output to, `rendered` or `raw` (see [details below](#response-format)); `rendered` is the default format                                                                                                                         |
 | `expiration`  | ⬜       | The maximum age of cached content in days to accept, where `0` will disable caching; `1` is the default number of days                                                                                                                              |
 | `delay`       | ⬜       | The number of seconds to inject before snapshotting the browsed content, from `.1` to `10` inclusive; no delay is injected by default                                                                                                               |
-| `session`     | ⬜       | Any unique identifier of up to 255 characters (regardless of character encoding); **Agent First** will make best efforts to route requests in the same session to the same egress node                                                              |
-| `subaccount`  | ⬜       | Any unique identifier of up to 255 characters (regardless of character encoding); **Agent First** will bill requests made from subaccounts separately                                                                                               |
+| `session`     | ⬜       | Any unique identifier of up to 255 characters (regardless of character encoding); **Agent First** will make best efforts to route calls in the same session to the same egress node                                                                 |
+| `subaccount`  | ⬜       | Any unique identifier of up to 255 characters (regardless of character encoding); **Agent First** will bill calls made from subaccounts separately                                                                                                  |
 
 ### Device emulation
 
@@ -78,7 +78,7 @@ $ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
 
 ### Response format
 
-Pages are returned as rendered HTML or in their raw (unrendered) HTML.
+Pages are returned as rendered HTML or raw (unrendered) HTML.
 
 ## Additional examples
 
@@ -87,7 +87,7 @@ Pages are returned as rendered HTML or in their raw (unrendered) HTML.
 ```bash
 $ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
   'https://api.agentfirst.dev/browser'\
-  '?url=https://example.com/'\
+  '?url=https://api.weather.gov/alerts'\
   '&expiration=0'
 ```
 
@@ -96,8 +96,8 @@ $ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
 ```bash
 $ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
   'https://api.agentfirst.dev/browser'\
-  '?url=https://example.com/'\
-  '&session=foo'
+  '?url=https://www.imdb.com/title/tt0094012'\
+  '&session=12345'
 ```
 
 ### Accounting
@@ -105,6 +105,6 @@ $ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
 ```bash
 $ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
   'https://api.agentfirst.dev/browser'\
-  '?url=https://example.com/'\
-  '&subaccount=foo'
+  '?url=https://www.gutenberg.org/files/3008/3008-h/3008-h.htm'\
+  '&subaccount=fubarco+systems'
 ```
