@@ -56,7 +56,7 @@
         ]
       },
       {
-        "group": "For proxy providers",
+        "group": "Proxy providers",
         "pages": [
           "whitelabeling"
         ]
