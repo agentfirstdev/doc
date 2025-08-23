@@ -67,20 +67,20 @@ The API will return JSON that contains an alphabetized array of device names:
 ]
 ```
 
+Then, pass your device name of choice in to your browsing request:
+
+```bash
+$ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
+  'https://api.agentfirst.dev/browser'\
+  '?url=https://crackberry.com/'\
+  '&device=blackberry+playbook'
+```
+
 ### Response format
 
 Pages are returned as rendered HTML or in their raw (unrendered) HTML.
 
 ## Additional examples
-
-### Device emulation
-
-```bash
-$ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
-  'https://api.agentfirst.dev/browser'\
-  '?url=https://example.com/'\
-  '&device=blackberry+playbook'
-```
 
 ### Cachebusting
 
