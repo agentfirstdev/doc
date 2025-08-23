@@ -8,6 +8,10 @@ description: Unblock difficult-to-crawl websites.
 import { Reference } from '/snippets/reference.mdx';
 import Authentication from '/snippets/authentication.mdx';
 import Url from '/snippets/browser/url.mdx';
+import Device from '/snippets/browser/device.mdx';
+import Expiration from '/snippets/browser/expiration.mdx';
+import Session from '/snippets/browser/session.mdx';
+import Subaccount from '/snippets/browser/subaccount.mdx';
 
 <Reference endpoint="browser" />
 
@@ -69,12 +73,7 @@ The API will return JSON that contains an alphabetized array of device names:
 
 Then, pass your device name of choice in to your browsing request:
 
-```bash
-$ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
-  'https://api.agentfirst.dev/browser'\
-  '?url=https://crackberry.com/'\
-  '&device=blackberry+playbook'
-```
+<Device />
 
 ### Response format
 
@@ -84,27 +83,12 @@ Pages are returned as rendered HTML or raw (unrendered) HTML.
 
 ### Cachebusting
 
-```bash
-$ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
-  'https://api.agentfirst.dev/browser'\
-  '?url=https://api.weather.gov/alerts'\
-  '&expiration=0'
-```
+<Expiration />
 
 ### Sticky sessions
 
-```bash
-$ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
-  'https://api.agentfirst.dev/browser'\
-  '?url=https://www.imdb.com/title/tt0094012'\
-  '&session=12345'
-```
+<Session />
 
 ### Accounting
 
-```bash
-$ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
-  'https://api.agentfirst.dev/browser'\
-  '?url=https://www.gutenberg.org/files/3008/3008-h/3008-h.htm'\
-  '&subaccount=fubarco+systems'
-```
+<Subaccount />
