@@ -5,6 +5,7 @@ iconType: light
 description: Unblock difficult-to-crawl websites.
 ---
 
+import { companyName, apiEndpoint } from '/snippets/config.mdx';
 import { Reference } from '/snippets/reference.mdx';
 import Authentication from '/snippets/authentication.mdx';
 import Url from '/snippets/browser/url.mdx';
@@ -17,10 +18,10 @@ import Subaccount from '/snippets/browser/subaccount.mdx';
 
 ## Usage
 
-**Agent First's** browser service navigates intelligently on your behalf, rendering JavaScript,
+**{companyName}'s** browser service navigates intelligently on your behalf, rendering JavaScript,
 solving [CAPTCHAs](https://www.ibm.com/topics/captcha), and retrying failed requests. The service
 has a RESTful interface that accepts `GET` requests at
-**https://&zwj;api.agentfirst.dev/browser**.
+**https://&zwj;{apiEndpoint}/browser**.
 
 Webpages can be localized with [geotargeting parameters](geotargeting). They're retrieved in real
 time by default or optionally queued for [later retrieval](scheduling). Up to **120 seconds** is
@@ -36,7 +37,7 @@ mitigations.
 Besides the [geotargeting and scheduling parameters](#usage) linked above, required and optional
 browsing parameters can be added in a
 [standard query string](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL#parameters).
-The keys and values **Agent First** supports are as follows:
+The keys and values **{companyName}** supports are as follows:
 
 | Key           | Required | Value                                                                                                                                                                                                                                               |
 | :------------ | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -46,14 +47,14 @@ The keys and values **Agent First** supports are as follows:
 | `format`      | ⬜       | The HTML format to output to, `rendered` or `raw` (see [details below](#response-format)); `rendered` is the default format                                                                                                                         |
 | `expiration`  | ⬜       | The maximum age of cached content in days to accept, where `0` will disable caching; `1` is the default number of days                                                                                                                              |
 | `delay`       | ⬜       | The number of seconds to inject before snapshotting the browsed content, from `.1` to `10` inclusive; no delay is injected by default                                                                                                               |
-| `session`     | ⬜       | Any unique identifier of up to 255 characters (regardless of character encoding); **Agent First** will make best efforts to route calls in the same session to the same egress node                                                                 |
-| `subaccount`  | ⬜       | Any unique identifier of up to 255 characters (regardless of character encoding); **Agent First** will bill calls made from subaccounts separately                                                                                                  |
+| `session`     | ⬜       | Any unique identifier of up to 255 characters (regardless of character encoding); **{companyName}** will make best efforts to route calls in the same session to the same egress node                                                               |
+| `subaccount`  | ⬜       | Any unique identifier of up to 255 characters (regardless of character encoding); **{companyName}** will bill calls made from subaccounts separately                                                                                                |
 
 ### Device emulation
 
 The `device` parameter lets you fetch device-specific content, rather than the default desktop
 content. For a list of supported smartphone and tablet devices, make a request with your API token
-and no parameters to **https://&zwj;api.agentfirst.dev/browser/devices**:
+and no parameters to **https://&zwj;{apiEndpoint}/browser/devices**:
 
 ```bash
 $ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \

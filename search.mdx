@@ -5,6 +5,7 @@ iconType: light
 description: Extract real-time Google search results.
 ---
 
+import { companyName, apiEndpoint } from '/snippets/config.mdx';
 import { Reference } from '/snippets/reference.mdx';
 import Authentication from '/snippets/authentication.mdx';
 import Terms from '/snippets/search/terms.mdx';
@@ -14,9 +15,9 @@ import Json from '/snippets/search/json.mdx';
 
 ## Usage
 
-**Agent First's** search service delivers all organic and paid Google results reliably, as
+**{companyName}'s** search service delivers all organic and paid Google results reliably, as
 structured or raw data. The service has a RESTful interface that accepts `GET` requests at
-**https://&zwj;api.agentfirst.dev/search**.
+**https://&zwj;{apiEndpoint}/search**.
 
 Searches can be localized with [geotargeting parameters](geotargeting). They're performed live by
 default or optionally queued for [later retrieval](scheduling). Live searches take an average of a
@@ -32,7 +33,7 @@ API call.
 Besides the [geotargeting and scheduling parameters](#usage) linked above, required and optional
 search parameters can be added in a
 [standard query string](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL#parameters).
-The keys and values **Agent First** supports are as follows:
+The keys and values **{companyName}** supports are as follows:
 
 | Key           | Required | Value                                                                                                                                                                                                                                                                                                                                                      |
 | :------------ | :------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -44,7 +45,7 @@ The keys and values **Agent First** supports are as follows:
 | `language`    | ⬜       | The commonly spelled name, [two-letter ISO code](https://www.loc.gov/standards/iso639-2/php/code_list.php), or [Google code](https://www.google.com/advanced_search) of the language to search in (these names and codes are case insensitive but required to include form- or URL-encoded spaces and punctuation marks); the language is unset by default |
 | `format`      | ⬜       | The format to output to, `html` or `json` (see [details below](#response-format)); `html` is the default format                                                                                                                                                                                                                                            |
 | `expiration`  | ⬜       | The maximum age of cached results in days to accept, where `0` will disable caching; `1` is the default number of days                                                                                                                                                                                                                                     |
-| `subaccount`  | ⬜       | Any unique identifier of up to 255 characters (regardless of character encoding); **Agent First** will bill calls made from subaccounts separately                                                                                                                                                                                                         |
+| `subaccount`  | ⬜       | Any unique identifier of up to 255 characters (regardless of character encoding); **{companyName}** will bill calls made from subaccounts separately                                                                                                                                                                                                       |
 
 ### Response format
 
