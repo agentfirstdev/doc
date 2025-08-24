@@ -9,6 +9,7 @@ import { companyName, apiEndpoint } from '/snippets/config.mdx';
 import { Reference } from '/snippets/reference.mdx';
 import Authentication from '/snippets/authentication.mdx';
 import Url from '/snippets/browser/url.mdx';
+import Devices from '/snippets/browser/devices.mdx';
 import Device from '/snippets/browser/device.mdx';
 import Expiration from '/snippets/browser/expiration.mdx';
 import Session from '/snippets/browser/session.mdx';
@@ -56,10 +57,7 @@ The `device` parameter lets you fetch device-specific content, rather than the d
 content. For a list of supported smartphone and tablet devices, make a request with your API token
 and no parameters to **https://&zwj;{apiEndpoint}/browser/devices**:
 
-```bash
-$ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
-  'https://api.agentfirst.dev/browser/devices'
-```
+<Devices />
 
 The API will return JSON that contains an alphabetized array of device names:
 
