@@ -5,6 +5,8 @@ iconType: light
 description: Defer responses for subsequent retrieval.
 ---
 
+import { apiEndpoint } from '/snippets/config.mdx';
+
 ## Asynchronous mode
 
 An API call that includes the `mode=async` key-value pair will be satisfied asynchronously:
@@ -34,8 +36,8 @@ In response, the API will provide a JSON job identifier:
 ```
 
 The job results or content or job status can be requested at any time thereafter by passing the
-identifier to **https://&zwj;api.agentfirst.dev/search/results** or
-**https://&zwj;api.agentfirst.dev/browser/content**:
+identifier to **https://&zwj;{apiEndpoint}/search/results** or
+**https://&zwj;{apiEndpoint}/browser/content**:
 
 ```bash
 $ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
