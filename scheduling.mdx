@@ -1,0 +1,74 @@
+---
+title: Scheduling
+icon: clock
+iconType: light
+description: Defer responses for subsequent retrieval.
+---
+
+## Asynchronous mode
+
+Any API request that includes the `mode=async` key-value pair will be satisfied asynchronously:
+
+```bash
+$ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
+  'https://api.agentfirst.dev/search'\
+  '?terms=foo'\
+  '&mode=async'
+```
+
+```bash
+$ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
+  'https://api.agentfirst.dev/browser'\
+  '?url=https://example.com/'\
+  '&mode=async'
+```
+
+In response, the API will provide a JSON job identifier:
+
+```json
+{ "id": "078fd246-f0f7-44a0-aabb-cadd7b12454f" }
+```
+
+```json
+{ "id": "1851dab8-4619-409f-893f-47dd3a180bc3" }
+```
+
+The job content or status can be requested at any time thereafter by passing the identifier to
+**https://&zwj;api.agentfirst.dev/search/results** or
+**https://&zwj;api.agentfirst.dev/browser/content**:
+
+```bash
+$ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
+  'https://api.agentfirst.dev/search/results'\
+  '?id=078fd246-f0f7-44a0-aabb-cadd7b12454f'
+```
+
+```bash
+$ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
+  'https://api.agentfirst.dev/browser/content'\
+  '?id=1851dab8-4619-409f-893f-47dd3a180bc3'
+```
+
+The content, if ready, will be returned in the
+[same format as synchronous results](search#response-format) or
+[synchronous content](browser#response-format); otherwise, a JSON status message will be returned.
+
+A `retrieving` status indicates that the search or request is in progress:
+
+```json
+{ "status": "retrieving" }
+```
+
+A `failed` status indicates that the search or request was unsuccessful and the call should be
+retried:
+
+```json
+{ "status": "failed" }
+```
+
+These are the scheduling keys and values:
+
+| Key    | Required | Value                                                                                                       |
+| :----- | :------- | :---------------------------------------------------------------------------------------------------------- |
+| `mode` | ⬜       | The synchronous or asynchronous method of retrieving content, `sync` or `async`; `sync` is the default mode |
+| `id`   | ⬜       | The job identifier provided by the API                                                                      |
