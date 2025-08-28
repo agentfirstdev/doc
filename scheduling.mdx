@@ -6,24 +6,18 @@ description: Defer responses for subsequent retrieval.
 ---
 
 import { apiEndpoint } from '/snippets/config.mdx';
+import SearchMode from '/snippets/search/mode.mdx';
+import BrowserMode from '/snippets/browser/mode.mdx';
+import Results from '/snippets/search/results.mdx';
+import Content from '/snippets/browser/content.mdx';
 
 ## Asynchronous mode
 
 An API call that includes the `mode=async` key-value pair will be satisfied asynchronously:
 
-```bash
-$ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
-  'https://api.agentfirst.dev/search'\
-  '?terms=foo'\
-  '&mode=async'
-```
+<SearchMode />
 
-```bash
-$ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
-  'https://api.agentfirst.dev/browser'\
-  '?url=https://example.com/'\
-  '&mode=async'
-```
+<BrowserMode />
 
 In response, the API will provide a JSON job identifier:
 
@@ -39,17 +33,9 @@ The job results or content or job status can be requested at any time thereafter
 identifier to **https://&zwj;{apiEndpoint}/search/results** or
 **https://&zwj;{apiEndpoint}/browser/content**:
 
-```bash
-$ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
-  'https://api.agentfirst.dev/search/results'\
-  '?id=078fd246-f0f7-44a0-aabb-cadd7b12454f'
-```
+<Results />
 
-```bash
-$ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
-  'https://api.agentfirst.dev/browser/content'\
-  '?id=1851dab8-4619-409f-893f-47dd3a180bc3'
-```
+<Content />
 
 The results or content, if ready, will be returned in the <Link href='search#response-format'>same
 format as synchronous results</Link> or <Link href='browser#response-format'>synchronous
