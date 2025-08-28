@@ -5,9 +5,9 @@ iconType: light
 description: Defer responses for subsequent retrieval.
 ---
 
-import { apiEndpoint } from '/snippets/config.mdx';
-import SearchMode from '/snippets/search/mode.mdx';
-import BrowserMode from '/snippets/browser/mode.mdx';
+import { companyName, apiEndpoint } from '/snippets/config.mdx';
+import Search from '/snippets/search/mode.mdx';
+import Browsing from '/snippets/browser/mode.mdx';
 import Results from '/snippets/search/results.mdx';
 import Content from '/snippets/browser/content.mdx';
 
@@ -15,9 +15,9 @@ import Content from '/snippets/browser/content.mdx';
 
 An API call that includes the `mode=async` key-value pair will be satisfied asynchronously:
 
-<SearchMode />
+<Search />
 
-<BrowserMode />
+<Browsing />
 
 In response, the API will provide a JSON job identifier:
 
@@ -56,7 +56,7 @@ retried:
 
 Here are the scheduling keys and values:
 
-| Key    | Required | Value                                                                                                     |
-| :----- | :------- | :-------------------------------------------------------------------------------------------------------- |
-| `mode` | ⬜       | The synchronous or asynchronous mode of retrieving content, `sync` or `async`; `sync` is the default mode |
-| `id`   | ⬜       | The identifier provided by the API for an asynchronous job                                                |
+| Key    | Required | Value                                                                                                    |
+| :----- | :------- | :------------------------------------------------------------------------------------------------------- |
+| `mode` | ⬜       | The synchronous or asynchronous mode of content retrieval, `sync` or `async`; `sync` is the default mode |
+| `id`   | ⬜       | The identifier provided by **{companyName}** to reference an asynchronous job                            |
