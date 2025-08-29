@@ -7,9 +7,9 @@ description: Defer responses for later retrieval.
 
 import { companyName, apiEndpoint } from '/snippets/config.mdx';
 import Search from '/snippets/search/mode.mdx';
-import Browsing from '/snippets/browser/mode.mdx';
-import Results from '/snippets/search/results.mdx';
-import Content from '/snippets/browser/content.mdx';
+import Browser from '/snippets/browser/mode.mdx';
+import Results from '/snippets/search/id.mdx';
+import Content from '/snippets/browser/id.mdx';
 
 ## Asynchronous mode
 
@@ -17,7 +17,7 @@ An API call that includes the `mode=async` key-value pair will be satisfied asyn
 
 <Search />
 
-<Browsing />
+<Browser />
 
 In response, the API will provide a JSON job identifier:
 

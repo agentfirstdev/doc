@@ -10,6 +10,8 @@ import { Reference } from '/snippets/reference.mdx';
 import Authentication from '/snippets/authentication.mdx';
 import Terms from '/snippets/search/terms.mdx';
 import Json from '/snippets/search/json.mdx';
+import Offset from '/snippets/search/offset.mdx';
+import Subaccount from '/snippets/search/subaccount.mdx';
 
 <Reference endpoint='search' />
 
@@ -66,12 +68,6 @@ If you set the output to JSON, your results will be parsed into nested objects.
 
 ## Additional examples
 
-```bash
-$ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
-  'https://api.agentfirst.dev/search?terms=foo+bar+baz&serps=2'
-```
+<Offset />
 
-```bash
-$ curl -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
-  'https://api.agentfirst.dev/search?terms=%22foo+bar+baz%22&serps=10&country=us&format=json'
-```
+<Subaccount />
