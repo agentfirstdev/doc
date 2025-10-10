@@ -1,3 +1,0 @@
-[submodule "api"]
-	path = endpoints
-	url = https://github.com/agentfirstdev/whitelabel
