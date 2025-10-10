@@ -27,10 +27,10 @@
       {
         "group": "API",
         "pages": [
-          "api/search",
-          "api/browser",
-          "api/geotargeting",
-          "api/scheduling",
+          "endpoints/search",
+          "endpoints/browser",
+          "endpoints/geotargeting",
+          "endpoints/scheduling",
           {
             "group": "Reference",
             "icon": "book-open",
@@ -39,16 +39,16 @@
               {
                 "group": "Search",
                 "pages": [
-                  "api/reference/search",
-                  "api/reference/search/results"
+                  "endpoints/reference/search",
+                  "endpoints/reference/search/results"
                 ]
               },
               {
                 "group": "Browsing",
                 "pages": [
-                  "api/reference/browser",
-                  "api/reference/browser/content",
-                  "api/reference/browser/devices"
+                  "endpoints/reference/browser",
+                  "endpoints/reference/browser/content",
+                  "endpoints/reference/browser/devices"
                 ]
               }
             ]
