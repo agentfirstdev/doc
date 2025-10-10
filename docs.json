@@ -27,10 +27,10 @@
       {
         "group": "API",
         "pages": [
-          "search",
-          "browser",
-          "geotargeting",
-          "scheduling",
+          "whitelabel/search",
+          "whitelabel/browser",
+          "whitelabel/geotargeting",
+          "whitelabel/scheduling",
           {
             "group": "Reference",
             "icon": "book-open",
@@ -39,16 +39,16 @@
               {
                 "group": "Search",
                 "pages": [
-                  "reference/search",
-                  "reference/search/results"
+                  "whitelabel/reference/search",
+                  "whitelabel/reference/search/results"
                 ]
               },
               {
                 "group": "Browsing",
                 "pages": [
-                  "reference/browser",
-                  "reference/browser/content",
-                  "reference/browser/devices"
+                  "whitelabel/reference/browser",
+                  "whitelabel/reference/browser/content",
+                  "whitelabel/reference/browser/devices"
                 ]
               }
             ]
