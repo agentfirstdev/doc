@@ -2,28 +2,17 @@
   "$schema": "https://mintlify.com/docs.json",
   "name": "Agent First",
   "theme": "aspen",
-  "colors": {
-    "primary": "#4a6de5",
-    "light": "#7999f7",
-    "dark": "#ff9d48"
-  },
+  "colors": { "primary": "#4a6de5", "light": "#7999f7", "dark": "#ff9d48" },
   "logo": {
     "light": "/logo/light.png",
     "dark": "/logo/dark.png",
     "href": "https://agentfirst.dev/"
   },
   "favicon": "/favicon.ico",
-  "css": [
-    "/style.css"
-  ],
+  "css": ["/style.css"],
   "navigation": {
     "groups": [
-      {
-        "group": "Introduction",
-        "pages": [
-          "index"
-        ]
-      },
+      { "group": "Introduction", "pages": ["index"] },
       {
         "group": "API",
         "pages": [
@@ -38,10 +27,7 @@
             "pages": [
               {
                 "group": "Search",
-                "pages": [
-                  "endpoints/reference/search",
-                  "endpoints/reference/search/results"
-                ]
+                "pages": ["endpoints/reference/search", "endpoints/reference/search/results"]
               },
               {
                 "group": "Browsing",
@@ -55,24 +41,13 @@
           }
         ]
       },
-      {
-        "group": "For service providers",
-        "pages": [
-          "whitelabeling"
-        ]
-      }
+      { "group": "For service providers", "pages": ["whitelabeling"] }
     ]
   },
   "navbar": {
     "links": [
-      {
-        "label": "Blog",
-        "href": "https://blog.agentfirst.dev/"
-      },
-      {
-        "label": "Help",
-        "href": "mailto:brain@agentfirst.dev"
-      }
+      { "label": "Blog", "href": "https://blog.agentfirst.dev/" },
+      { "label": "Help", "href": "mailto:brain@agentfirst.dev" }
     ],
     "primary": {
       "type": "button",
@@ -88,16 +63,7 @@
     }
   },
   "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+    "options": ["copy", "view", "chatgpt", "claude", "perplexity", "mcp", "cursor", "vscode"]
   },
   "isWhiteLabeled": true
 }
