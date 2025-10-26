@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import childProcess from 'node:child_process';
 import filesystem from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -20,16 +21,25 @@ const companyName = args.company || args.c;
 const apiEndpoint = args.endpoint || args.e;
 
 if (!companyName || !apiEndpoint) {
-  console.error('Usage: npm run whitelabel -- --company=\'[name]\' --endpoint=[domain]');
+  console.error("Usage: npm run whitelabel -- --company='[name]' --endpoint=[domain]");
 
   process.exit(1);
 }
 
-const companySlug = companyName.toUpperCase().replaceAll(' ', '_');
 const whitelabelRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const mintlifyRoot = childProcess
+  .execSync('git rev-parse --show-toplevel', {
+    cwd: path.join(whitelabelRoot, '..'),
+    stdio: ['ignore', 'pipe', 'ignore']
+  })
+  .toString()
+  .trim();
 const templateDirectory = path.join(whitelabelRoot, 'templates');
 const fromSnippetDirectory = path.join(templateDirectory, 'snippets');
-const toSnippetDirectory = path.join(whitelabelRoot, '..', 'snippets', 'whitelabel');
+const toSnippetDirectory = path.join(mintlifyRoot, 'snippets', 'whitelabel');
+const fromApiSpec = path.join(templateDirectory, 'openapi.json');
+const toApiSpec = path.join(whitelabelRoot, 'openapi.json');
+const companySlug = companyName.toUpperCase().replaceAll(' ', '_');
 const renderTemplate = async (from, to, vals) => {
   await filesystem.writeFile(
     to,
@@ -56,15 +66,11 @@ const renderDirectory = async (from, to, vals) => {
 };
 
 (async () => {
-  await renderTemplate(
-    path.join(templateDirectory, 'openapi.json'),
-    path.join(whitelabelRoot, 'openapi.json'),
-    { companyName, companySlug, apiEndpoint }
-  );
-  await renderDirectory(
-    fromSnippetDirectory,
-    toSnippetDirectory,
-    { companyName, companySlug, apiEndpoint }
-  );
+  await renderDirectory(fromSnippetDirectory, toSnippetDirectory, {
+    companyName,
+    companySlug,
+    apiEndpoint
+  });
+  await renderTemplate(fromApiSpec, toApiSpec, { companyName, companySlug, apiEndpoint });
   console.log('Doc whitelabeled successfully!\n');
 })();
