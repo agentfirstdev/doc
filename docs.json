@@ -6,7 +6,7 @@
   "logo": {
     "light": "/logo/light.png",
     "dark": "/logo/dark.png",
-    "href": "https://wip.agentfirst.dev/"
+    "href": "https://agentfirst.dev/"
   },
   "favicon": "/favicon.ico",
   "css": ["/style.css"],
