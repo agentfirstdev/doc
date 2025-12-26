@@ -20,6 +20,7 @@
           "endpoints/browser",
           "endpoints/geotargeting",
           "endpoints/scheduling",
+          "endpoints/reporting",
           {
             "group": "Reference",
             "icon": "book-open",
@@ -41,7 +42,7 @@
           }
         ]
       },
-      { "group": "For service providers", "pages": ["whitelabeling"] }
+      { "group": "For service providers", "pages": ["whitelabeling", "provisioning"] }
     ]
   },
   "navbar": {
