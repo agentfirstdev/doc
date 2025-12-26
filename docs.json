@@ -42,7 +42,10 @@
           }
         ]
       },
-      { "group": "For service providers", "pages": ["whitelabeling", "administration"] }
+      {
+        "group": "For service providers",
+        "pages": ["whitelabeling", "administration", "endpoints/reporting"]
+      }
     ]
   },
   "navbar": {
