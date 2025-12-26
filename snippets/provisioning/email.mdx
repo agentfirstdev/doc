@@ -1,0 +1,9 @@
+```bash
+$ curl -X POST 'https://api.agentfirst.dev/users' \
+  -H "Authorization: Bearer $AGENT_FIRST_TOKEN" \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "email": "user@example.com",
+    "services": ["search", "browser"]
+  }'
+```
