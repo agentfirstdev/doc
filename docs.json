@@ -42,7 +42,7 @@
           }
         ]
       },
-      { "group": "For service providers", "pages": ["whitelabeling", "provisioning"] }
+      { "group": "For service providers", "pages": ["whitelabeling", "administration"] }
     ]
   },
   "navbar": {
