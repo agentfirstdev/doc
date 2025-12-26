@@ -23,7 +23,7 @@
           "endpoints/reporting",
           {
             "group": "Reference",
-            "icon": "book-open",
+            "icon": "book",
             "iconType": "light",
             "pages": [
               {
@@ -44,7 +44,7 @@
       },
       {
         "group": "For service providers",
-        "pages": ["whitelabeling", "administration", "endpoints/reporting"]
+        "pages": ["whitelabeling", "administration", "endpoints/reporting", "documentation"]
       }
     ]
   },
