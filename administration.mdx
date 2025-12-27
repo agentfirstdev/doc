@@ -1,0 +1,38 @@
+---
+title: Administration
+icon: users
+iconType: light
+description: Create and manage customer accounts.
+---
+
+import Email from '/snippets/administration/email.mdx';
+
+## New users
+
+You can provision a user by specifying their email address and the API services they should have
+access to:
+
+<Email />
+
+The user’s secret API token will be returned, along with the their normalized email address and
+associated services:
+
+```json
+{
+  "email": "user@example.com",
+  "token": "a1-0dF6qKHYD7SNU5kAtjOmwHpH3iFgpylA",
+  "services": ["search", "browser"]
+}
+```
+
+Here are the available provisioning keys and values:
+
+| Key        | Required | Value                                                                                                                                |
+| :--------- | :------- | :----------------------------------------------------------------------------------------------------------------------------------- |
+| `email`    | ✅       | The (case-insensitive) email address (255 characters maximum, regardless of character encoding) of the user to create an account for |
+| `services` | ✅       | An array of at least one of the API services, `search` and `browser`, to grant access to                                             |
+
+<Warning>
+  This endpoint is rate limited; if you receive a `429` response, pause for the backoff time given
+  by the `Retry-After` header before making another request.
+</Warning>
