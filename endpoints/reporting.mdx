@@ -2,7 +2,7 @@
 title: Reporting
 icon: chart-line
 iconType: light
-description: View API consumption and performance.
+description: Pull API consumption and performance.
 ---
 
 import Dates from '/snippets/whitelabel/reporting/dates.mdx';
@@ -51,7 +51,7 @@ You can also filter the metrics by one or more services:
   <Services />
 </Accordion>
 
-Here are the reporting keys and values:
+Here are the available reporting keys and values:
 
 | Key       | Required | Value                                                                                                                                                                                                                |
 | :-------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -61,8 +61,8 @@ Here are the reporting keys and values:
 | `service` | ⬜       | The service to query data for, `search` or `browser`; multiple services can be provided by repeating the key; data for all services will be included by default                                                      |
 
 <Warning>
-  This endpoint is rate limited; if you receive a `429` response, respect the backoff time given by
-  the `Retry-After` header before making another request.
+  This endpoint is rate limited; if you receive a `429` response, pause for the backoff time given
+  by the `Retry-After` header before making another request.
 </Warning>
 
 ## Additional examples
