@@ -25,12 +25,20 @@ service permissions:
 }
 ```
 
-Here are the available provisioning keys and values:
+Here are the provisioning request keys and values:
 
 | Key        | Required | Value                                                                                                                                                     |
 | :--------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `email`    | ✅       | The email address of the user to create an account for; the address is case insensitive and can be up to 255 characters, regardless of character encoding |
 | `services` | ✅       | An array of at least one of the API services to grant the account access to; the possible service values are `search` and `browser`                       |
+
+Here are the response keys and values:
+
+| Key        | Value                                                                                       |
+| :--------- | :------------------------------------------------------------------------------------------ |
+| `email`    | The email address of the new user account as recorded by the API                            |
+| `token`    | The secret token issued by the API                                                          |
+| `services` | An array of the permissioned API services, `search` and `browser` being the possible values |
 
 <Warning>
   This endpoint is rate limited; if you receive a `429` response, pause for the backoff time given
