@@ -34,11 +34,11 @@ Here are the provisioning request keys and values:
 
 Here are the response keys and values:
 
-| Key        | Value                                                                                       |
-| :--------- | :------------------------------------------------------------------------------------------ |
-| `email`    | The email address of the new user account as recorded by the API                            |
-| `token`    | The secret token issued by the API                                                          |
-| `services` | An array of the permissioned API services, `search` and `browser` being the possible values |
+| Key        | Value                                                                                                                      |
+| :--------- | :------------------------------------------------------------------------------------------------------------------------- |
+| `email`    | The email address of the new user account as recorded by the API                                                           |
+| `token`    | The bearer token issued by the API for authentication                                                                      |
+| `services` | An array of the API services that the account has been granted access to, `search` and `browser` being the possible values |
 
 <Warning>
   This endpoint is rate limited; if you receive a `429` response, pause for the backoff time given
