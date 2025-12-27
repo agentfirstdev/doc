@@ -13,7 +13,7 @@ import Emails from '/snippets/whitelabel/reporting/emails.mdx';
 
 ## Usage data
 
-You can pull hourly metrics by specifying a date or time range:
+You can request hourly metrics by specifying start and end dates or times:
 
 <Dates />
 
@@ -21,7 +21,7 @@ You can pull hourly metrics by specifying a date or time range:
   <Datetimes />
 </Accordion>
 
-The API will respond with JSON data:
+The API will respond with structured JSON:
 
 ```json
 [{
@@ -43,7 +43,7 @@ The API will respond with JSON data:
 }]
 ```
 
-You can also filter by one or more services:
+You can also filter the metrics by one or more services:
 
 <Service />
 
@@ -53,16 +53,16 @@ You can also filter by one or more services:
 
 Here are the reporting keys and values:
 
-| Key       | Required | Value                                                                                                                                                                                                                             |
-| :-------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `from`    | ✅       | The [ISO datetime](https://www.w3.org/TR/NOTE-datetime), inclusive, to pull data from                                                                                                                                             |
-| `to`      | ✅       | The [ISO datetime](https://www.w3.org/TR/NOTE-datetime), inclusive, to pull data to                                                                                                                                               |
-| `email`   | ⬜       | **[Whitelabelers only]** The email address of the user to pull data from (the address is case insensitive); multiple email addresses can be provided by repeating the key; data for all email addresses will be pulled by default |
-| `service` | ⬜       | The service to pull data for, `search` or `browser`; multiple services can be provided by repeating the key; data for all services will be pulled by default                                                                      |
+| Key       | Required | Value                                                                                                                                                                                                               |
+| :-------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `from`    | ✅       | The [ISO datetime](https://www.w3.org/TR/NOTE-datetime) to query data starting from, inclusively                                                                                                                    |
+| `to`      | ✅       | The [ISO datetime](https://www.w3.org/TR/NOTE-datetime) to query data up to, inclusively                                                                                                                            |
+| `email`   | ⬜       | **[Whitelabelers only]** The (case-insensitive) email address of the user to query data for; multiple email addresses can be provided by repeating the key; data for all email addresses will be queried by default |
+| `service` | ⬜       | The service to query data for, `search` or `browser`; multiple services can be provided by repeating the key; data for all services will be queried by default                                                      |
 
 <Warning>
-  This endpoint is rate limited; if you receive a `429 Rate limit exceeded; please retry in …`
-  response, wait for the specified amount of time before trying again.
+  This endpoint may throttle requests; if you receive a `429 Rate limit exceeded; please retry in
+  ...` response, wait for the specified time before trying again.
 </Warning>
 
 ## Additional examples
