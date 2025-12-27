@@ -21,7 +21,7 @@ You can request hourly metrics by specifying start and end dates or times:
   <Datetimes />
 </Accordion>
 
-The API will respond with structured JSON:
+The API will respond with detailed JSON:
 
 ```json
 [{
@@ -53,16 +53,16 @@ You can also filter the metrics by one or more services:
 
 Here are the reporting keys and values:
 
-| Key       | Required | Value                                                                                                                                                                                                               |
-| :-------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `from`    | ✅       | The [ISO datetime](https://www.w3.org/TR/NOTE-datetime) to query data starting from, inclusively                                                                                                                    |
-| `to`      | ✅       | The [ISO datetime](https://www.w3.org/TR/NOTE-datetime) to query data up to, inclusively                                                                                                                            |
-| `email`   | ⬜       | **[Whitelabelers only]** The (case-insensitive) email address of the user to query data for; multiple email addresses can be provided by repeating the key; data for all email addresses will be queried by default |
-| `service` | ⬜       | The service to query data for, `search` or `browser`; multiple services can be provided by repeating the key; data for all services will be queried by default                                                      |
+| Key       | Required | Value                                                                                                                                                                                                                |
+| :-------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `from`    | ✅       | The [ISO datetime](https://www.w3.org/TR/NOTE-datetime) to query data starting from, inclusively                                                                                                                     |
+| `to`      | ✅       | The [ISO datetime](https://www.w3.org/TR/NOTE-datetime) to query data up to, inclusively                                                                                                                             |
+| `email`   | ⬜       | **[Whitelabelers only]** The (case-insensitive) email address of the user to query data for; multiple email addresses can be provided by repeating the key; data for all email addresses will be included by default |
+| `service` | ⬜       | The service to query data for, `search` or `browser`; multiple services can be provided by repeating the key; data for all services will be included by default                                                      |
 
 <Warning>
-  This endpoint may throttle requests; if you receive a `429 Rate limit exceeded; please retry in
-  ...` response, wait for the specified time before trying again.
+  This endpoint is rate limited; if you receive a `429` response, wait for the backoff time given in
+  the `Retry-After` header before making another request.
 </Warning>
 
 ## Additional examples
