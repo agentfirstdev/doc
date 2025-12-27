@@ -1,0 +1,70 @@
+---
+title: Reporting
+icon: chart-line
+iconType: light
+description: View API consumption and performance.
+---
+
+import Dates from '/snippets/whitelabel/reporting/dates.mdx';
+import Datetimes from '/snippets/whitelabel/reporting/datetimes.mdx';
+import Service from '/snippets/whitelabel/reporting/service.mdx';
+import Services from '/snippets/whitelabel/reporting/services.mdx';
+import Emails from '/snippets/whitelabel/reporting/emails.mdx';
+
+## Usage data
+
+You can pull hourly metrics by specifying a date or time range:
+
+<Dates />
+
+<Accordion icon='terminal' title='View time-range example'>
+  <Datetimes />
+</Accordion>
+
+The API will respond with JSON data:
+
+```json
+[{
+  "email": "user@example.com",
+  "from": "2025-12-24T00:00:00+00:00",
+  "to": "2025-12-25T00:00:00+00:00",
+  "service": "browser",
+  "result": "success",
+  "calls": 17208,
+  "meanSecs": 6.78
+}, {
+  "email": "user@example.com",
+  "from": "2025-12-24T07:00:00+00:00",
+  "to": "2025-12-24T15:00:00+00:00",
+  "service": "browser",
+  "result": "failure",
+  "calls": 18,
+  "meanSecs": 60.22
+}]
+```
+
+You can also filter by one or more services:
+
+<Service />
+
+<Accordion icon='terminal' title='View multiple-services example'>
+  <Services />
+</Accordion>
+
+Here are the reporting keys and values:
+
+| Key       | Required | Value                                                                                                                                                                                                                             |
+| :-------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `from`    | ✅       | The [ISO datetime](https://www.w3.org/TR/NOTE-datetime), inclusive, to pull data from                                                                                                                                             |
+| `to`      | ✅       | The [ISO datetime](https://www.w3.org/TR/NOTE-datetime), inclusive, to pull data to                                                                                                                                               |
+| `email`   | ⬜       | **[Whitelabelers only]** The email address of the user to pull data from (the address is case insensitive); multiple email addresses can be provided by repeating the key; data for all email addresses will be pulled by default |
+| `service` | ⬜       | The service to pull data for, `search` or `browser`; multiple services can be provided by repeating the key; data for all services will be pulled by default                                                                      |
+
+<Warning>
+  This endpoint is rate limited; if you receive a `429 Rate limit exceeded; please retry in …`
+  response, wait for the specified amount of time before trying again.
+</Warning>
+
+## Additional examples
+
+<Emails />
