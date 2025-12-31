@@ -5,6 +5,7 @@ iconType: light
 description: Create and manage user accounts.
 ---
 
+import { Throttling } from '/snippets/whitelabel/throttling.mdx';
 import Email from '/snippets/administration/email.mdx';
 
 <Tip>
@@ -44,7 +45,4 @@ Here are the response keys and values:
 | `token`    | The bearer token issued by the API for authentication                                                                      |
 | `services` | An array of the API services that the account has been granted access to, `search` and `browser` being the possible values |
 
-<Warning>
-  This endpoint is rate limited; if you receive a `429` response, pause for the backoff time given
-  by the `Retry-After` header before making another request.
-</Warning>
+<Throttling />
