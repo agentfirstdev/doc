@@ -7,6 +7,10 @@ description: Create and manage user accounts.
 
 import Email from '/snippets/administration/email.mdx';
 
+<Tip>
+  See also the <Link href='endpoints/reference/users'>API reference</Link> for more detail.
+</Tip>
+
 ## New customers
 
 You can provision a user by specifying their email address and the API services to assign them
@@ -14,7 +18,7 @@ access permission:
 
 <Email />
 
-The user’s secret API token will be returned, along with the their normalized email address and
+The user's secret API token will be returned, along with the their normalized email address and
 service permissions:
 
 ```json

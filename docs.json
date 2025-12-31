@@ -37,7 +37,9 @@
                   "endpoints/reference/browser/content",
                   "endpoints/reference/browser/devices"
                 ]
-              }
+              },
+              { "group": "Reporting", "pages": ["endpoints/reference/usage"] },
+              { "group": "Administration", "pages": ["endpoints/reference/users"] }
             ]
           }
         ]
