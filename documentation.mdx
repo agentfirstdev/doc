@@ -7,17 +7,17 @@ description: Customize and host this website.
 
 ## Platform support
 
-The API documentation plugs directly into **Mintlify**. If you're using another documentation
-platform, [let us know](mailto:brain@agentfirst.dev).
+The **Agent First** documentation is compatible with the **Mintlify** platform out of the box. If
+you use another documentation platform, [let us know](mailto:brain@agentfirst.dev).
 
 ## Mintlify integration
 
-Follow the steps below to whitelabel the documentation in **Mintlify**.
+Follow the steps below to whitelabel the documentation with **Mintlify**.
 
 <Steps>
-  <Step title="Import API documentation">
-    Go to your Mintlify directory then import the API documentation by specifying a subdirectory
-    name and URL path you want to use:
+  <Step title="Import whitelabel project">
+    Go to your Mintlify directory then import the whitelabel project by choosing a subdirectory name
+    and URL path to nest the documentation under:
 
     ```shell
     git subtree add \
@@ -28,7 +28,7 @@ Follow the steps below to whitelabel the documentation in **Mintlify**.
     ```
 
     <Accordion icon='code' title='View subdirectory/pathname example'>
-      We used `endpoints`, as in https://doc.agentfirst.dev/endpoints/search:
+      We chose `endpoints`, as in https://doc.agentfirst.dev/endpoints/search:
 
       ```shell
       git subtree add \
