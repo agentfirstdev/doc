@@ -5,6 +5,37 @@ iconType: light
 description: Customize and host this website.
 ---
 
-<Note>
-  Documentation instructions are coming soon.
-</Note>
+## Platform support
+
+Out of the box, our documentation can plug right into **Mintlify**.
+[Let us know](mailto:brain@agentfirst.dev) if you're using another documentation platform.
+
+## Mintlify integration
+
+Follow these steps to whitelabel the documentation.
+
+<Steps>
+  <Step title="Import templates">
+    Go to your Mintlify directory then import the templates with your subdirectory path of choice:
+
+    ```shell
+    $ git subtree add \
+      --prefix='[Insert path here]' \
+      --squash \
+      https://github.com/agentfirstdev/whitelabel \
+      main
+    ```
+
+    <Accordion icon='code' title='View path example'>
+      We chose `endpoints`, as in https://doc.agentfirst.dev/endpoints/search:
+
+      ```shell
+      $ git subtree add \
+        --prefix=endpoints \
+        --squash \
+        https://github.com/agentfirstdev/whitelabel \
+        main
+      ```
+    </Accordion>
+  </Step>
+</Steps>
