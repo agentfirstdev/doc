@@ -19,6 +19,8 @@ import Email from '/snippets/administration/email.mdx';
 a RESTful interface that accepts `GET`, `POST`, and `PATCH` requests at
 **https://&zwj;api.agentfirst.dev/users**.
 
+<Throttling />
+
 ### New customers
 
 You can provision a user by specifying their email address and the API services to assign them
@@ -51,5 +53,3 @@ Here are the response keys and values:
 | `email`    | The email address of the new user account as recorded by the API                                                           |
 | `token`    | The bearer token issued by the API for authentication                                                                      |
 | `services` | An array of the API services that the account has been granted access to, `search` and `browser` being the possible values |
-
-<Throttling />
