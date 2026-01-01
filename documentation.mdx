@@ -12,16 +12,16 @@ description: Customize and host this website.
 
 ## Mintlify integration
 
-Follow the steps below to whitelabel the documentation with **Mintlify**.
+Follow the steps below to whitelabel our documentation with **Mintlify**.
 
 <Steps>
-  <Step title="Import whitelabel project">
+  <Step title="Import project">
     Go to your Mintlify directory then import the whitelabel project by choosing a subdirectory name
     and URL path to nest the documentation under:
 
     ```shell
     git subtree add \
-    --prefix='[Insert subdirectory/pathname here]' \
+    --prefix='[subdirectory/pathname here]' \
     --squash \
     https://github.com/agentfirstdev/whitelabel \
     main
@@ -44,7 +44,7 @@ Follow the steps below to whitelabel the documentation with **Mintlify**.
     Switch to your new subdirectory then download the whitelabel dependencies:
 
     ```shell
-    cd '[Insert subdirectory/pathname here]'
+    cd '[subdirectory/pathname here]'
     npm i
     ```
   </Step>
