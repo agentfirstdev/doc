@@ -70,6 +70,58 @@ Follow the steps below to whitelabel our documentation within **Mintlify**.
     </Accordion>
   </Step>
 
+  <Step title="Link pages">
+    Link to whichever documentation pages you want in your navigation by editing the `docs.json`
+    file.
+
+    <Accordion icon='code' title='View navigation example'>
+      Here's how we link from
+      [our file](https://github.com/agentfirstdev/doc/blob/main/docs.json#L13-L50):
+
+      ```json
+      ...
+      "navigation": {
+        "groups": [
+          ...
+          {
+            "group": "API",
+            "pages": [
+              "endpoints/search",
+              "endpoints/browser",
+              "endpoints/geotargeting",
+              "endpoints/scheduling",
+              "endpoints/reporting",
+              {
+                "group": "Reference",
+                "icon": "book",
+                "iconType": "light",
+                "pages": [
+                  {
+                    "group": "Search",
+                    "pages": ["endpoints/reference/search", "endpoints/reference/search/results"]
+                  },
+                  {
+                    "group": "Browsing",
+                    "pages": [
+                      "endpoints/reference/browser",
+                      "endpoints/reference/browser/content",
+                      "endpoints/reference/browser/devices"
+                    ]
+                  },
+                  { "group": "Reporting", "pages": ["endpoints/reference/usage"] },
+                  ...
+                ]
+              }
+            ]
+          },
+          ...
+        ]
+      },
+      ...
+      ```
+    </Accordion>
+  </Step>
+
   <Step title="Preview changes">
     Preview your changes as usual:
 
