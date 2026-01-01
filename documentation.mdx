@@ -53,7 +53,7 @@ Follow the steps below to whitelabel our documentation with **Mintlify**.
     Brand the documentation by calling the whitelabel script with your company name and API domain
     of choice:
 
-    ```bash
+    ```shell
     npm run whitelabel -- \
     --company='[company name here]'\
     --endpoint=[API domain here]
@@ -68,5 +68,19 @@ Follow the steps below to whitelabel our documentation with **Mintlify**.
       --endpoint=api.agentfirst.dev
       ```
     </Accordion>
+  </Step>
+
+  <Step title="Update project">
+    To resync the documentation later, update the whitelabel project:
+
+    ```shell
+    git subtree pull \
+    --prefix='[subdirectory/pathname here]' \
+    --squash \
+    https://github.com/agentfirstdev/whitelabel \
+    main
+    ```
+
+    Then, proceed from **step 2**.
   </Step>
 </Steps>
