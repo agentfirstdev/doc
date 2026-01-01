@@ -19,7 +19,7 @@ import Emails from '/snippets/whitelabel/reporting/emails.mdx';
 
 ## Usage
 
-**{companyName}'s** reporting service buckets and updates traffic, reliability, and speed metrics at
+**{companyName}'s** reporting service buckets and updates volume, success, and latency metrics at
 intervals of **1 hour**. The service has a RESTful interface that accepts `GET` requests at
 **https://&zwj;{apiEndpoint}/usage**.
 
@@ -29,11 +29,11 @@ intervals of **1 hour**. The service has a RESTful interface that accepts `GET` 
 
 ### Report parameters
 
-An ISO date or time range is required:
+You should specify an ISO date or time range to generate a report:
 
 <Datetimes />
 
-The API will return a JSON report:
+The API will return a JSON array:
 
 ```json
 [{
@@ -55,7 +55,7 @@ The API will return a JSON report:
 }]
 ```
 
-Filtering by one or more services is optional:
+Your report can optionally be filtered by one or more services:
 
 <Service />
 
@@ -63,7 +63,7 @@ Filtering by one or more services is optional:
   <Services />
 </Accordion>
 
-Here are the request keys and values:
+These are the request keys and values:
 
 | Key       | Required | Value                                                                                                                                                                                                                |
 | :-------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -72,7 +72,7 @@ Here are the request keys and values:
 | `email`   | ⬜       | **[Whitelabelers only]** The (case-insensitive) email address of the user to query data for; multiple email addresses can be provided by repeating the key; data for all email addresses will be included by default |
 | `service` | ⬜       | The service to query data for, `search` or `browser`; multiple services can be provided by repeating the key; data for all services will be included by default                                                      |
 
-Here are the response keys and values:
+These are the response keys and values:
 
 | Key        | Value                                                                          |
 | :--------- | :----------------------------------------------------------------------------- |
