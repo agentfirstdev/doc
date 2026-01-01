@@ -48,4 +48,25 @@ Follow the steps below to whitelabel our documentation with **Mintlify**.
     npm i
     ```
   </Step>
+
+  <Step title="Rebrand documentation">
+    Execute the whitelabel script to rebrand the documentation with your company name and API domain
+    of choice:
+
+    ```bash
+    npm run whitelabel -- \
+    --company='[company name here]'\
+    --endpoint=[API domain here]
+    ```
+
+    <Accordion icon='code' title='View rebranding example'>
+      Here's how we branded our documentation:
+
+      ```shell
+      npm run whitelabel -- \
+      --company='Agent First' \
+      --endpoint=api.agentfirst.dev
+      ```
+    </Accordion>
+  </Step>
 </Steps>
