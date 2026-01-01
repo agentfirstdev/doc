@@ -19,9 +19,9 @@ import Emails from '/snippets/whitelabel/reporting/emails.mdx';
 
 ## Usage
 
-**{companyName}'s** reporting service buckets and refreshes raw activity, success-rate, and
-response-time metrics at intervals of **1 hour**. The service has a RESTful interface that accepts
-`GET` requests at **https://&zwj;{apiEndpoint}/usage**.
+**{companyName}'s** reporting service buckets and updates traffic, reliability, and speed metrics at
+intervals of **1 hour**. The service has a RESTful interface that accepts `GET` requests at
+**https://&zwj;{apiEndpoint}/usage**.
 
 <Authentication />
 
@@ -29,11 +29,11 @@ response-time metrics at intervals of **1 hour**. The service has a RESTful inte
 
 ### Report parameters
 
-A standard date or time range is required:
+An ISO date or time range is required:
 
 <Datetimes />
 
-A JSON report will be returned:
+The API will return a JSON report:
 
 ```json
 [{
@@ -55,7 +55,7 @@ A JSON report will be returned:
 }]
 ```
 
-The metrics can also be filtered by one or more services:
+Filtering by one or more services is optional:
 
 <Service />
 
