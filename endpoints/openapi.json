@@ -88,12 +88,7 @@
           {
             "name": "mode",
             "description": "The synchronous or asynchronous mode of results retrieval (see the [async resource](search/results)).",
-            "schema": {
-              "type": "string",
-              "enum": ["sync", "async"],
-              "default": "sync",
-              "example": "sync"
-            },
+            "schema": { "$ref": "#/components/schemas/Mode" },
             "in": "query"
           },
           {
@@ -168,9 +163,7 @@
                   "properties": {
                     "status": {
                       "description": "The status of the queued search.",
-                      "type": "string",
-                      "enum": ["retrieving", "failed"],
-                      "example": "retrieving"
+                      "allOf": [{ "$ref": "#/components/schemas/Status" }]
                     }
                   },
                   "required": ["status"]
@@ -256,12 +249,7 @@
           {
             "name": "mode",
             "description": "The synchronous or asynchronous mode of content retrieval (see the [async resource](browser/content)).",
-            "schema": {
-              "type": "string",
-              "enum": ["sync", "async"],
-              "default": "sync",
-              "example": "sync"
-            },
+            "schema": { "$ref": "#/components/schemas/Mode" },
             "in": "query"
           },
           {
@@ -338,9 +326,7 @@
                   "properties": {
                     "status": {
                       "description": "The status of the queued request.",
-                      "type": "string",
-                      "enum": ["retrieving", "failed"],
-                      "example": "retrieving"
+                      "allOf": [{ "$ref": "#/components/schemas/Status" }]
                     }
                   },
                   "required": ["status"]
@@ -398,10 +384,8 @@
                     "example": "user@example.com"
                   },
                   "services": {
-                    "description": "At least one of the API services to grant the account access to.",
-                    "type": "array",
-                    "items": { "type": "string", "enum": ["search", "browser"] },
-                    "example": ["search", "browser"]
+                    "description": "The API services to grant the account access to.",
+                    "allOf": [{ "$ref": "#/components/schemas/Services" }]
                   }
                 },
                 "required": ["email", "services"]
@@ -430,9 +414,7 @@
                     },
                     "services": {
                       "description": "The API services that the account has been granted access to.",
-                      "type": "array",
-                      "items": { "type": "string", "enum": ["search", "browser"] },
-                      "example": ["search", "browser"]
+                      "allOf": [{ "$ref": "#/components/schemas/Services" }]
                     }
                   },
                   "required": ["email", "token", "services"]
@@ -478,7 +460,7 @@
           {
             "name": "service",
             "description": "The service to select data for; multiple services can be provided by repeating the key; data for all services is included by default.",
-            "schema": { "type": "string", "enum": ["search", "browser"], "example": "browser" },
+            "schema": { "$ref": "#/components/schemas/Service" },
             "in": "query"
           }
         ],
@@ -509,9 +491,7 @@
                       },
                       "service": {
                         "description": "The service included in the data.",
-                        "type": "string",
-                        "enum": ["search", "browser"],
-                        "example": "browser"
+                        "allOf": [{ "$ref": "#/components/schemas/Service" }]
                       },
                       "result": {
                         "description": "The type of result included in the data.",
@@ -550,6 +530,14 @@
   "components": {
     "securitySchemes": { "bearerAuth": { "type": "http", "scheme": "bearer" } },
     "schemas": {
+      "Mode": { "type": "string", "enum": ["sync", "async"], "default": "sync", "example": "sync" },
+      "Services": {
+        "type": "array",
+        "items": { "$ref": "#/components/schemas/Service" },
+        "minItems": 1,
+        "example": ["search", "browser"]
+      },
+      "Service": { "type": "string", "enum": ["search", "browser"], "example": "browser" },
       "Results": {
         "summary": "Search results",
         "type": "object",
@@ -642,11 +630,7 @@
         "properties": {
           "type": { "type": "string", "enum": ["organic"], "example": "organic" },
           "page": { "type": "integer", "minimum": 1, "maximum": 10, "example": 1 },
-          "section": {
-            "type": "string",
-            "enum": ["top", "left", "main", "bottom", "right"],
-            "example": "main"
-          },
+          "section": { "$ref": "#/components/schemas/Section" },
           "feature": { "type": "integer", "minimum": 1, "example": 1 },
           "position": { "type": "integer", "minimum": 1, "example": 1 },
           "url": { "type": "string", "example": "https://foofighters.com/" },
@@ -690,7 +674,7 @@
         "properties": {
           "type": { "type": "string", "enum": ["organic-with-sitelinks"] },
           "page": { "type": "integer", "minimum": 1, "maximum": 10 },
-          "section": { "type": "string", "enum": ["top", "left", "main", "bottom", "right"] },
+          "section": { "$ref": "#/components/schemas/Section" },
           "feature": { "type": "integer", "minimum": 1 },
           "position": { "type": "integer", "minimum": 1 },
           "url": { "type": "string" },
@@ -713,6 +697,11 @@
           "snippet",
           "sitelinks"
         ]
+      },
+      "Section": {
+        "type": "string",
+        "enum": ["top", "left", "main", "bottom", "right"],
+        "example": "main"
       },
       "Link": {
         "summary": "Link element",
@@ -744,7 +733,8 @@
           "snippet": { "type": "string" }
         },
         "required": ["position", "url", "title", "snippet"]
-      }
+      },
+      "Status": { "type": "string", "enum": ["retrieving", "failed"], "example": "retrieving" }
     },
     "responses": {
       "authenticationError": {
