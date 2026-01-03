@@ -358,13 +358,13 @@
                       "service": {
                         "type": "string",
                         "enum": ["search", "browser"],
-                        "description": "The service that the data represents.",
+                        "description": "The service represented by the data.",
                         "example": "browser"
                       },
                       "result": {
                         "type": "string",
                         "enum": ["success", "failure"],
-                        "description": "The type of result that the data represents.",
+                        "description": "The type of result represented by the data.",
                         "example": "success"
                       },
                       "calls": {
@@ -704,7 +704,7 @@
         }
       },
       "unsupportedError": {
-        "description": "The resource is nonexistant.",
+        "description": "One or more resources is nonexistant.",
         "content": {
           "text/plain": { "schema": { "type": "string", "example": "Domain is nonexistant" } }
         }
