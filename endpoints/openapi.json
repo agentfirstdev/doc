@@ -91,8 +91,8 @@
           "200": {
             "description": "The search results.",
             "content": {
-              "text/html": { "schema": { "type": "string" } },
-              "application/json": { "schema": { "$ref": "#/components/schemas/Results" } }
+              "application/json": { "schema": { "$ref": "#/components/schemas/Results" } },
+              "text/html": { "schema": { "type": "string" } }
             }
           },
           "202": {
@@ -127,8 +127,8 @@
           "200": {
             "description": "The search results.",
             "content": {
-              "text/html": { "schema": { "type": "string" } },
-              "application/json": { "schema": { "$ref": "#/components/schemas/Results" } }
+              "application/json": { "schema": { "$ref": "#/components/schemas/Results" } },
+              "text/html": { "schema": { "type": "string" } }
             }
           },
           "202": {
