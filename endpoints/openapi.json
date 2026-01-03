@@ -290,7 +290,6 @@
                 "schema": {
                   "type": "array",
                   "items": { "type": "string" },
-                  "summary": "Device names",
                   "example": [
                     "Blackberry PlayBook",
                     "Blackberry PlayBook landscape",
@@ -340,7 +339,6 @@
                   "type": "array",
                   "items": {
                     "type": "object",
-                    "summary": "Hourly report",
                     "properties": {
                       "email": {
                         "type": "string",
