@@ -377,6 +377,38 @@
       "get": {
         "summary": "Usage data",
         "description": "Generate an hourly consumption report.",
+        "parameters": [
+          {
+            "name": "from",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "The [ISO datetime](https://www.w3.org/TR/NOTE-datetime) to select data starting from, inclusively.",
+            "example": "2025-12-24T18:00:00-06:00",
+            "required": true
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "The [ISO datetime](https://www.w3.org/TR/NOTE-datetime) to select data up to, inclusively.",
+            "example": "2025-12-25T9:00:00-06:00",
+            "required": true
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "**[Whitelabelers only]** The (case-insensitive) email address of the user to select data for; multiple email addresses can be provided by repeating the key; data for all email addresses will be included by default.",
+            "example": "user@example.com"
+          },
+          {
+            "name": "service",
+            "in": "query",
+            "schema": { "type": "string", "enum": ["search", "browser"] },
+            "description": "The service to select data for; multiple services can be provided by repeating the key; data for all services will be included by default.",
+            "example": "browser"
+          }
+        ],
         "responses": {
           "200": {
             "description": "The hourly report.",
@@ -389,7 +421,7 @@
                     "properties": {
                       "email": {
                         "type": "string",
-                        "description": "The email address of the user whose data is represented.",
+                        "description": "The email address of the user whose data is selected.",
                         "example": "user@example.com"
                       },
                       "from": {
@@ -405,13 +437,13 @@
                       "service": {
                         "type": "string",
                         "enum": ["search", "browser"],
-                        "description": "The service represented by the data.",
+                        "description": "The service included in the data.",
                         "example": "browser"
                       },
                       "result": {
                         "type": "string",
                         "enum": ["success", "failure"],
-                        "description": "The type of result represented by the data.",
+                        "description": "The type of result included in the data.",
                         "example": "success"
                       },
                       "calls": {
