@@ -309,11 +309,58 @@
       "post": {
         "summary": "New user",
         "description": "Create a whitelabel account.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "description": "The email address of the user to create an account for; the address is case insensitive and can be up to 255 characters, regardless of character encoding.",
+                    "example": "user@example.com"
+                  },
+                  "services": {
+                    "type": "array",
+                    "items": { "type": "string", "enum": ["search", "browser"] },
+                    "description": "At least one of the API services to grant the account access to.",
+                    "example": ["search", "browser"]
+                  }
+                },
+                "required": ["email", "services"]
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "201": {
-            "description": "The API token of the account.",
+            "description": "The metadata of the account.",
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/Results" } }
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "description": "The email address of the new user account as recorded by the API.",
+                      "example": "user@example.com"
+                    },
+                    "token": {
+                      "type": "string",
+                      "description": "The bearer token issued by the API for authentication.",
+                      "example": "a1-0dF6qKHYD7SNU5kAtjOmwHpH3iFgpylA"
+                    },
+                    "services": {
+                      "type": "array",
+                      "items": { "type": "string", "enum": ["search", "browser"] },
+                      "description": "The API services that the account has been granted access to.",
+                      "example": ["search", "browser"]
+                    }
+                  },
+                  "required": ["id"]
+                }
+              }
             }
           },
           "401": { "$ref": "#/components/responses/authenticationError" },
