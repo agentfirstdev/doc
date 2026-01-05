@@ -5,6 +5,7 @@ iconType: light
 description: Create and manage user accounts.
 ---
 
+import { companyName, apiEndpoint } from '/snippets/whitelabel/config.mdx';
 import { Throttling } from '/snippets/whitelabel/throttling.mdx';
 import Authentication from '/snippets/whitelabel/authentication.mdx';
 import Email from '/snippets/administration/email.mdx';
@@ -15,9 +16,9 @@ import Email from '/snippets/administration/email.mdx';
 
 ## Usage
 
-**Agent First's** administration service lets you support your whitelabel customers. The service has
-a RESTful interface that accepts `GET`, `POST`, and `PATCH` requests at
-**https://&zwj;api.agentfirst.dev/users**.
+**{companyName}'s** administration service lets you support your whitelabel customers. The service
+has a RESTful interface that accepts `GET`, `POST`, and `PATCH` requests at
+**https://&zwj;{apiEndpoint}/users**.
 
 <Throttling />
 

@@ -5,8 +5,10 @@ iconType: light
 description: Expand your proxy product line.
 ---
 
-**Agent First** services are optimized for seamless integration by proxy and related providers. You
-can contact us to learn more or start upselling your existing customers.
+import { companyName, emailAddress } from '/snippets/whitelabel/config.mdx';
+
+**{companyName}** services are optimized for seamless integration by proxy and related providers.
+You can contact us to learn more or start upselling your existing customers.
 
 <Columns cols={2}>
   <Card title='Administration' icon='users' href='administration'>
@@ -20,11 +22,6 @@ can contact us to learn more or start upselling your existing customers.
   </Card>
 </Columns>
 
-<Card
-  title='Your branded services'
-  icon='envelope'
-  href='mailto:brain@agentfirst.dev'
-  horizontal
->
+<Card title='Your branded services' icon='envelope' href={`mailto:${emailAddress}`} horizontal>
   Contact us to learn more.
 </Card>
