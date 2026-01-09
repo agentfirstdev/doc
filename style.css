@@ -9,3 +9,12 @@
 #content-area a, #content-area a:visited {
   color: #4a6de5;
 }
+
+[data-callout-type="info"] {
+  border-color: rgb(14 165 233 / .2);
+  background-color: rgb(240 249 255 / .5);
+}
+
+[data-callout-type="info"] svg {
+  color: rgb(14 165 233 / 1);
+}
