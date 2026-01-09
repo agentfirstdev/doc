@@ -18,3 +18,12 @@
 [data-callout-type="info"] svg {
   color: rgb(14 165 233 / 1);
 }
+
+footer {
+  padding-top: 0 !important;
+  padding-bottom: 4rem !important;
+}
+
+footer > div:nth-of-type(2) {
+  visibility: hidden;
+}
