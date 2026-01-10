@@ -52,13 +52,13 @@
   },
   "navbar": {
     "links": [
-      { "label": "Blog", "href": "https://blog.agentfirst.dev/" },
+      { "label": "Blog", "href": "https://agentfirst.dev/" },
       { "label": "Help", "href": "mailto:brain@agentfirst.dev" }
     ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard.agentfirst.dev/"
+      "href": "https://agentfirst.dev/"
     }
   },
   "footer": {
