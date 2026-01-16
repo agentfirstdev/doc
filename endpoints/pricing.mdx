@@ -12,25 +12,25 @@ import { companyName, checkoutUrl } from '/snippets/whitelabel/config.mdx';
 API access is based on prepaid credits. **{companyName}** decrements your balance only for
 successful API calls. Most calls cost **1 credit** each or are **free**:
 
-| Service                                              | Base credits |
-| :--------------------------------------------------- | :----------- |
-| <Link href='search'>Search</Link>                    | **1**        |
-| <Link href='browser'>Browser</Link>                  | **1**        |
-| <Link href='usage'>Reporting</Link>                  | **0 (free)** |
-| <Link href='../administration'>Administration</Link> | **0 (free)** |
+| Service                             | Base credits |
+| :---------------------------------- | :----------- |
+| <Link href='search'>Search</Link>   | 1            |
+| <Link href='browser'>Browser</Link> | 1            |
+| <Link href='usage'>Reporting</Link> | 0 (free)     |
+| Administration                      | 0 (free)     |
 
 A few premium parameters multiply the base cost of calls that use them:
 
 | Service | Key          | Value        | Credit multiplier |
 | :------ | :----------- | :----------- | :---------------- |
-| Browser | `difficulty` | `medium`     | **2**             |
-| Browser | `speed`      | `ridiculous` | **1.5**           |
+| Browser | `difficulty` | `medium`     | 2                 |
+| Browser | `speed`      | `ridiculous` | 1.5               |
 
 For example, successfully calling the browser service with both `difficulty=medium` and
 `speed=ridiculous` params would cost **3 credits** in total:
 
 <Latex>1 base credit x 2 x 1.5 = 3 total credits</Latex>
 
-<Card title='API credit balance' icon='wallet' href={checkoutUrl} horizontal>
-  Fund or refill your account.
+<Card title='Your API credits' icon='piggy-bank' href={checkoutUrl} horizontal>
+  Create or reload an account.
 </Card>
