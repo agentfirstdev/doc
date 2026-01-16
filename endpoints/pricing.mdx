@@ -7,15 +7,17 @@ description: Understand API credits and your balance.
 
 import { companyName } from '/snippets/whitelabel/config.mdx';
 
-The API operates on a credit-based system. **{companyName}** charges for successful API calls only.
-Most calls cost **1 credit apiece** or are **free**:
+## Credit system
 
-| Endpoint  | Base credits |
-| :-------- | :----------- |
-| `search`  | **1 / call** |
-| `browser` | **1 / call** |
-| `usage`   | **0 (free)** |
-| `users`   | **0 (free)** |
+API accounting is credit based. **{companyName}** charges only for successful API calls. Most calls
+cost **1 credit** apiece or are **free**:
+
+| Endpoint  | Base credits   |
+| :-------- | :------------- |
+| `search`  | **1 per call** |
+| `browser` | **1 per call** |
+| `usage`   | **0 (free)**   |
+| `users`   | **0 (free)**   |
 
 A few premium parameters multiply the base cost of calls that use them:
 
@@ -27,4 +29,4 @@ A few premium parameters multiply the base cost of calls that use them:
 For example, successfully calling the `browser` endpoint with both `difficulty=medium` and
 `speed=ridiculous` params would cost:
 
-**1 base credit × 2 × 1.5 = 3 credits**
+> **1 base credit × 2 × 1.5 = 3 credits**
