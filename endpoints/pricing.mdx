@@ -2,15 +2,15 @@
 title: Pricing
 icon: credit-card
 iconType: light
-description: Understand API credits and your balance.
+description: Understand credit-based billing.
 ---
 
 import { companyName } from '/snippets/whitelabel/config.mdx';
 
 ## Credit system
 
-API access is credit based. **{companyName}** charges only for successful API calls. Most calls cost
-**1 credit** each or are **free**:
+API access is based on prepaid credits. **{companyName}** decrements your balance only for
+successful API calls. Most calls cost **1 credit** each or are **free**:
 
 | Endpoint  | Base credits |
 | :-------- | :----------- |
@@ -27,6 +27,6 @@ A few premium parameters multiply the base cost of calls that use them:
 | `browser` | `speed`      | `ridiculous` | **1.5**           |
 
 For example, successfully calling the `browser` endpoint with both `difficulty=medium` and
-`speed=ridiculous` params would cost **3 total credits**:
+`speed=ridiculous` params would cost a total of **3 credits**:
 
-<Latex>1 base credit x 2 x 1.5 = 3 credits</Latex>
+<Latex>1 base credit x 2 x 1.5 = 3 total credits</Latex>
