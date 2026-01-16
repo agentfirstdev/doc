@@ -47,7 +47,7 @@
       },
       {
         "group": "For service providers",
-        "pages": ["whitelabeling", "administration", "endpoints/usage", "documentation"]
+        "pages": ["whitelabeling", "admin", "endpoints/usage", "doc"]
       }
     ]
   },
