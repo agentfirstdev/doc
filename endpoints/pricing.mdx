@@ -1,0 +1,28 @@
+---
+title: Pricing
+icon: credit-card
+iconType: light
+description: Understand and manage API credits.
+---
+
+import { companyName } from '/snippets/whitelabel/config.mdx';
+
+The API runs on a credit system. **{companyName}** charges for successful API calls only. Most calls
+cost **1 or 0 credits**:
+
+| Endpoint  | Base credits |
+| :-------- | :----------- |
+| `search`  | **1/call**   |
+| `browser` | **1/call**   |
+| `usage`   | **0 (free)** |
+| `users`   | **0 (free)** |
+
+A few premium parameters multiply the cost of calls that include them:
+
+| Endpoint  | Key          | Value        | Credits multiplier |
+| :-------- | :----------- | :----------- | :----------------- |
+| `browser` | `difficulty` | `medium`     | **2**              |
+| `browser` | `speed`      | `ridiculous` | **1.5**            |
+
+For example, successfully calling the `browser` endpoint with both `difficulty=medium` and
+`speed=ridiculous` params would cost **1 base credit × 2 × 1.5 = 3 credits**.

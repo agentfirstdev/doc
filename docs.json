@@ -21,6 +21,7 @@
           "endpoints/geotargeting",
           "endpoints/scheduling",
           "endpoints/reporting",
+          "endpoints/pricing",
           {
             "group": "Reference",
             "icon": "book",
