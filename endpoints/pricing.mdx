@@ -12,7 +12,7 @@ import { companyName } from '/snippets/whitelabel/config.mdx';
 API access is based on prepaid credits. **{companyName}** decrements your balance only for
 successful API calls. Most calls cost **1 credit** each or are **free**:
 
-| Endpoint  | Base credits |
+| Service   | Base credits |
 | :-------- | :----------- |
 | `search`  | **1**        |
 | `browser` | **1**        |
@@ -21,12 +21,12 @@ successful API calls. Most calls cost **1 credit** each or are **free**:
 
 A few premium parameters multiply the base cost of calls that use them:
 
-| Endpoint  | Key          | Value        | Credit multiplier |
+| Service   | Key          | Value        | Credit multiplier |
 | :-------- | :----------- | :----------- | :---------------- |
 | `browser` | `difficulty` | `medium`     | **2**             |
 | `browser` | `speed`      | `ridiculous` | **1.5**           |
 
-For example, successfully calling the `browser` endpoint with both `difficulty=medium` and
+For example, successfully calling the `browser` service with both `difficulty=medium` and
 `speed=ridiculous` params would cost **3 credits** in total:
 
 <Latex>1 base credit x 2 x 1.5 = 3 total credits</Latex>
