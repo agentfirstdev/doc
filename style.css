@@ -19,6 +19,10 @@
   color: rgb(14 165 233 / 1);
 }
 
+.latex-style {
+  font-size: 1.25rem;
+}
+
 footer {
   margin-top: -1.375rem;
   padding-top: 0 !important;
