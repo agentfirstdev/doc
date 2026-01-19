@@ -21,7 +21,6 @@
           "endpoints/geotargeting",
           "endpoints/scheduling",
           "endpoints/usage",
-          "endpoints/errors",
           "endpoints/pricing",
           {
             "group": "Reference",
