@@ -54,7 +54,11 @@
   },
   "navbar": {
     "links": [{ "label": "Help", "href": "mailto:brain@agentfirst.dev" }],
-    "primary": { "type": "button", "label": "Dashboard", "href": "https://agentfirst.dev/" }
+    "primary": {
+      "type": "button",
+      "label": "Dashboard",
+      "href": "https://agentfirst.dev/dashboard"
+    }
   },
   "footer": {
     "socials": {
