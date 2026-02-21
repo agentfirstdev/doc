@@ -1,3 +1,6 @@
 [submodule "linter"]
 	path = linter
 	url = https://github.com/agentfirstdev/linter
+[submodule "whitelabel"]
+	path = whitelabel
+	url = https://github.com/agentfirstdev/whitelabel
