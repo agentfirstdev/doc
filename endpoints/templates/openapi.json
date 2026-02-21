@@ -264,7 +264,7 @@
           },
           {
             "name": "captcha",
-            "description": "The method of handling any detected captcha, where `rejected` triggers a `403` error response.",
+            "description": "The method by which any detected captcha should be handled, where `rejected` leads to a `403` response.",
             "schema": {
               "type": "string",
               "enum": ["solved", "ignored", "rejected"],
