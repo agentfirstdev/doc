@@ -45,7 +45,6 @@
           }
         ]
       },
-      { "group": "Custom services", "pages": ["training"] },
       {
         "group": "For service providers",
         "pages": ["whitelabeling", "admin", "endpoints/usage", "doc"]
