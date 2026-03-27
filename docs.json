@@ -17,6 +17,7 @@
         "group": "API",
         "pages": [
           "endpoints/search",
+          "endpoints/ai",
           "endpoints/browser",
           "endpoints/geotargeting",
           "endpoints/scheduling",
