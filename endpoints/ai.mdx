@@ -1,0 +1,39 @@
+---
+title: AI chat
+icon: message
+iconType: light
+description: Generate popular LLM completions.
+---
+
+import { companyName, apiEndpoint } from '/snippets/whitelabel/config.mdx';
+import { Reference } from '/snippets/whitelabel/reference.mdx';
+import { Autoscaling } from '/snippets/whitelabel/autoscaling.mdx';
+import Authentication from '/snippets/whitelabel/authentication.mdx';
+import Prompt from '/snippets/whitelabel/ai/prompt.mdx';
+import Json from '/snippets/whitelabel/ai/json.mdx';
+
+<Reference endpoint='ai' />
+
+## Service usage
+
+**{companyName}'s** AI service provides all completion content and grounding sources from frontier
+AI labs as structured or raw data for use in generative or language engine optimization. The service
+has a RESTful interface that accepts `GET` requests at **https://&zwj;{apiEndpoint}/ai**.
+
+Chats can be localized with <Link href='geotargeting'>geotargeting parameters</Link>. They're held
+live by default or optionally queued for <Link href='scheduling'>subsequent retrieval</Link>. Live
+chats take an average of several seconds but may require multiple retries, in which case up to **3
+minutes** is allocated per API call. <Link href='usage'>Usage data</Link> is published regularly.
+
+<Authentication />
+
+<Prompt />
+
+<Autoscaling />
+
+### Chat parameters
+
+Besides the [geotargeting and scheduling parameters](#usage) linked above, required and optional
+chat parameters can be added in a
+[standard query string](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL#parameters).
+The keys and values **{companyName}** supports are as follows:
