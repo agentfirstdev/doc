@@ -47,7 +47,7 @@ The keys and values **{companyName}** supports are as follows:
 | `device` (planned)   | ⬜       | The name as returned by the [devices resource](#device-emulation) of the device to emulate chatting on (these names are case insensitive but must include form- or URL-encoded spaces and punctuation marks); device emulation is unused by default                                                                                                    |
 | `language` (planned) | ⬜       | The commonly spelled name or [two-letter ISO code](https://www.loc.gov/standards/iso639-2/php/code_list.php) of the language to chat in (these names and codes are case insensitive but required to include form- or URL-encoded spaces and punctuation marks); the language is unset by default                                                       |
 | `display` (planned)  | ⬜       | The commonly spelled name or [two-letter ISO code](https://www.loc.gov/standards/iso639-2/php/code_list.php) of the chat interface's display language (these names and codes are case insensitive but required to include form- or URL-encoded spaces and punctuation marks); the display language is unset by default or set to the language if given |
-| `format`             | ⬜       | The format to output to, `rendered`, `raw`, or `json` (see the [section below](#response-format)); `json` is the default format                                                                                                                                                                                                                        |
+| `format`             | ⬜       | The format to output to, `json`, `rendered`, or `raw` (see the [section below](#response-format)); `json` is the default format                                                                                                                                                                                                                        |
 | `expiration`         | ⬜       | The age in days of when to consider a cached completion expired, where `0` disables caching; `1` is the default number of days before expiration                                                                                                                                                                                                       |
 
 ### Device emulation
@@ -72,3 +72,34 @@ The API will return JSON that contains an alphabetized array of device names:
 Then, pass your device name of choice into your chat request:
 
 <Device />
+
+### Response format
+
+Completions are returned as structured JSON, rendered HTML, or raw (unrendered) HTML.
+
+#### JSON
+
+If you set the output to JSON, your completion will be parsed into an object with the
+[geotargeting keys and values](#usage) linked above and these AI keys and values:
+
+| Key                  | Value                                                                                                                                                                                                                                                                                                                                                  |
+| :------------------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
+| `model`              | The AI model that was conversed with                                                                                                       |
+| `prompt`             | The chat prompt that was used                                                                                                              |
+| `html`               | The rendered HTML of the entire conversation                                                                                               |
+| `promptHtml`         | The rendered HTML of the prompt portion of the conversation                                                                                |
+| `completionHtml`     | The rendered HTML of the completion portion of the conversation                                                                            |
+| `sourcesHtml`        | The rendered HTML of the sources portion of the conversation                                                                               |
+| `fanoutQueries`      | An array of the fanout search queries, if any, that the model performed to generate the completion; only some models expose fanout queries |
+| `device` (planned)   | The emulated device name that the conversation was on                                                                                      |
+| `language` (planned) | The commonly spelled name or two-letter ISO code of the language that the conversation is in                                               |
+| `display` (planned)  | The commonly spelled name or two-letter ISO code of the display language that chat interface is in                                         |
+
+<Accordion icon='code' title='View JSON example'>
+  <Json />
+</Accordion>
+
+#### HTML
+
+HTML is available after processing by rendering and JavaScript engines or in the raw form sent by
+the chatbot.
