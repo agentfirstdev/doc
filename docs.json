@@ -14,15 +14,11 @@
     "groups": [
       { "group": "Introduction", "pages": ["index"] },
       {
-        "group": "API",
+        "group": "Core API",
         "pages": [
           "endpoints/search",
           "endpoints/ai",
           "endpoints/browser",
-          "endpoints/geotargeting",
-          "endpoints/scheduling",
-          "endpoints/usage",
-          "endpoints/pricing",
           {
             "group": "Reference",
             "icon": "book",
@@ -39,7 +35,22 @@
                   "endpoints/reference/browser/content",
                   "endpoints/reference/browser/devices"
                 ]
-              },
+              }
+            ]
+          }
+        ]
+      },
+      { "group": "Shared options", "pages": ["endpoints/geotargeting", "endpoints/scheduling"] },
+      {
+        "group": "API management",
+        "pages": [
+          "endpoints/usage",
+          "endpoints/pricing",
+          {
+            "group": "Reference",
+            "icon": "book",
+            "iconType": "light",
+            "pages": [
               {
                 "group": "Reporting",
                 "pages": ["endpoints/reference/usage", "endpoints/reference/user"]
