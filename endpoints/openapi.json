@@ -11,11 +11,11 @@
     "/search": {
       "get": {
         "summary": "Results",
-        "description": "Retrieve popular search results or queue results for later retrieval.",
+        "description": "Retrieve search results or queue results for later retrieval.",
         "parameters": [
           {
             "name": "terms",
-            "description": "The broad or exact word or phrase to query (e.g., `foo bar baz` or `\"foo bar baz\"`); the terms require [form or URL encoding](https://developer.mozilla.org/en-US/docs/Glossary/Percent-encoding) (with any space character being replaced by a `+` character or `%20` sequence).",
+            "description": "The broad or exact word or phrase of up to 255 characters to query (e.g., `foo bar baz` or `\"foo bar baz\"`); the terms require [form or URL encoding](https://developer.mozilla.org/en-US/docs/Glossary/Percent-encoding) (with any space character being replaced by a `+` character or `%20` sequence).",
             "schema": { "type": "string", "example": "foo" },
             "in": "query",
             "required": true
@@ -191,10 +191,83 @@
         }
       }
     },
+    "/ai/completions": {
+      "get": {
+        "summary": "Async completions",
+        "description": "Retrieve the completion or status of a queued conversation.",
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The identifier returned by the [AI endpoint](../ai) of the queued conversation to retrieve.",
+            "schema": { "type": "string", "example": "1851dab8-4619-409f-893f-47dd3a180bc3" },
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The AI completion.",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Completion" } },
+              "text/html": { "schema": { "type": "string" } }
+            }
+          },
+          "202": {
+            "description": "The conversation status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "description": "The status of the queued conversation.",
+                      "allOf": [{ "$ref": "#/components/schemas/Status" }]
+                    }
+                  },
+                  "required": ["status"]
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/authenticationError" },
+          "403": { "$ref": "#/components/responses/authorizationError" },
+          "422": { "$ref": "#/components/responses/paramsError" },
+          "500": { "$ref": "#/components/responses/unknownError" }
+        }
+      }
+    },
+    "/ai/devices": {
+      "get": {
+        "summary": "Devices",
+        "description": "Retrieve supported device names.",
+        "responses": {
+          "200": {
+            "description": "The device names.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "example": [
+                    "Blackberry PlayBook",
+                    "Blackberry PlayBook landscape",
+                    "BlackBerry Z30",
+                    "<string>"
+                  ]
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/authenticationError" },
+          "403": { "$ref": "#/components/responses/authorizationError" },
+          "402": { "$ref": "#/components/responses/creditsError" }
+        }
+      }
+    },
     "/browser": {
       "get": {
         "summary": "Content",
-        "description": "Retrieve webpage content or queue content for later retrieval.",
+        "description": "Retrieve web content or queue content for later retrieval.",
         "parameters": [
           {
             "name": "url",
@@ -326,7 +399,7 @@
                     "id": {
                       "description": "The identifier to retrieve the queued request with.",
                       "type": "string",
-                      "example": "1851dab8-4619-409f-893f-47dd3a180bc3"
+                      "example": "21cb972e-0e0f-47bb-9ce9-65b99e9cee77"
                     }
                   },
                   "required": ["id"]
@@ -354,7 +427,7 @@
           {
             "name": "id",
             "description": "The identifier returned by the [browser endpoint](../browser) of the queued request to retrieve.",
-            "schema": { "type": "string", "example": "1851dab8-4619-409f-893f-47dd3a180bc3" },
+            "schema": { "type": "string", "example": "21cb972e-0e0f-47bb-9ce9-65b99e9cee77" },
             "in": "query",
             "required": true
           }
@@ -391,10 +464,10 @@
     "/browser/devices": {
       "get": {
         "summary": "Devices",
-        "description": "Retrieve a list of supported device names.",
+        "description": "Retrieve supported device names.",
         "responses": {
           "200": {
-            "description": "The list of device names.",
+            "description": "The device names.",
             "content": {
               "application/json": {
                 "schema": {
@@ -764,7 +837,7 @@
             "example": "google"
           },
           "terms": {
-            "description": "The queried word or phrase.",
+            "description": "The broad or exact query terms.",
             "type": "string",
             "example": "foo"
           },
@@ -954,6 +1027,96 @@
           "snippet": { "type": "string" }
         },
         "required": ["position", "url", "title", "snippet"]
+      },
+      "Completion": {
+        "summary": "AI completion",
+        "type": "object",
+        "properties": {
+          "model": {
+            "description": "The prompted AI model.",
+            "type": "string",
+            "enum": ["chatgpt", "gemini", "perplexity (coming soon)", "copilot (coming soon)"],
+            "example": "chatgpt"
+          },
+          "prompt": {
+            "description": "The completed user prompt.",
+            "type": "string",
+            "example": "best basketball shoes for 2026"
+          },
+          "html": {
+            "description": "The rendered HTML of the entire conversation.",
+            "type": "string",
+            "example": "<!DOCTYPE html><html lang=\"en-US\" ..."
+          },
+          "promptHtml": {
+            "description": "The rendered HTML of just the prompt portion of the conversation.",
+            "type": "string",
+            "example": "<h4 class=\"sr-only select-none\">You said: ..."
+          },
+          "completionHtml": {
+            "description": "The rendered HTML of just the completion portion of the conversation.",
+            "type": "string",
+            "example": "<h4 class=\"sr-only select-none\">ChatGPT said: ..."
+          },
+          "sourcesHtml": {
+            "description": "The rendered HTML of just the sources portion of the conversation.",
+            "type": "string",
+            "example": "<section aria-label=\"Sources\" ..."
+          },
+          "subqueries": {
+            "description": "The fanout queries that the model searched while responding; only some models expose these queries.",
+            "type": "array",
+            "items": { "type": "string" },
+            "example": [
+              "best basketball shoes 2026",
+              "top rated basketball shoes 2026 reviews",
+              "best performance basketball shoes 2026",
+              "best basketball shoes for guards 2026",
+              "best basketball shoes for wide feet 2026",
+              "best outdoor basketball shoes 2026",
+              "most popular basketball shoes 2026"
+            ]
+          },
+          "device": {
+            "description": "The name of the emulated device that the conversation was had on.",
+            "type": "string",
+            "example": null
+          },
+          "country": {
+            "description": "The ISO code of the targeted country.",
+            "type": "string",
+            "example": null
+          },
+          "subdivision": {
+            "description": "The partial ISO code of the targeted subdivision.",
+            "type": "string",
+            "example": null
+          },
+          "city": {
+            "description": "The common name of the targeted city.",
+            "type": "string",
+            "example": null
+          },
+          "language": {
+            "description": "The common name or ISO code of the targeted language.",
+            "type": "string",
+            "example": null
+          },
+          "display": {
+            "description": "The common name or ISO code of the targeted display language.",
+            "type": "string",
+            "example": null
+          }
+        },
+        "required": [
+          "model",
+          "prompt",
+          "html",
+          "promptHtml",
+          "completionHtml",
+          "sourcesHtml",
+          "subqueries"
+        ]
       },
       "Status": {
         "summary": "Job status",

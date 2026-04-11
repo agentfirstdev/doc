@@ -29,6 +29,14 @@
                 "pages": ["endpoints/reference/search", "endpoints/reference/search/results"]
               },
               {
+                "group": "AI",
+                "pages": [
+                  "endpoints/reference/ai",
+                  "endpoints/reference/ai/completions",
+                  "endpoints/reference/ai/devices"
+                ]
+              },
+              {
                 "group": "Browsing",
                 "pages": [
                   "endpoints/reference/browser",
