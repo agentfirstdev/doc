@@ -1033,13 +1033,13 @@
         "type": "object",
         "properties": {
           "model": {
-            "description": "The prompted AI model.",
+            "description": "The AI model that generated the completion.",
             "type": "string",
             "enum": ["chatgpt", "gemini", "perplexity (coming soon)", "copilot (coming soon)"],
             "example": "chatgpt"
           },
           "prompt": {
-            "description": "The completed user prompt.",
+            "description": "The user prompt that the completion was generated for.",
             "type": "string",
             "example": "best basketball shoes for 2026"
           },
@@ -1064,7 +1064,7 @@
             "example": "<section aria-label=\"Sources\" ..."
           },
           "subqueries": {
-            "description": "The fanout queries that the model searched while responding; only some models expose these queries.",
+            "description": "The fanout queries that the model searched to generate the completion; only some models expose these queries.",
             "type": "array",
             "items": { "type": "string" },
             "example": [
@@ -1078,7 +1078,7 @@
             ]
           },
           "device": {
-            "description": "The name of the emulated device that the conversation was had on.",
+            "description": "The name of the targeted emulated device.",
             "type": "string",
             "example": null
           },
@@ -1097,12 +1097,12 @@
             "type": "string",
             "example": null
           },
-          "language": {
+          "language (planned)": {
             "description": "The common name or ISO code of the targeted language.",
             "type": "string",
             "example": null
           },
-          "display": {
+          "display (planned)": {
             "description": "The common name or ISO code of the targeted display language.",
             "type": "string",
             "example": null
