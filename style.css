@@ -10,6 +10,11 @@
   color: #4a6de5;
 }
 
+table th:not(:last-child), table td:not(:last-child) {
+  min-width: 0;
+  white-space: nowrap;
+}
+
 [data-callout-type="info"] {
   border-color: rgb(14 165 233 / .2);
   background-color: rgb(240 249 255 / .5);
