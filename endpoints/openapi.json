@@ -113,10 +113,7 @@
         "responses": {
           "200": {
             "description": "The search results.",
-            "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/Results" } },
-              "text/html": { "schema": { "type": "string" } }
-            }
+            "content": { "text/html": { "schema": { "type": "string" } } }
           },
           "202": {
             "description": "A job identifier.",
@@ -162,10 +159,7 @@
         "responses": {
           "200": {
             "description": "The search results.",
-            "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/Results" } },
-              "text/html": { "schema": { "type": "string" } }
-            }
+            "content": { "text/html": { "schema": { "type": "string" } } }
           },
           "202": {
             "description": "The search status.",
