@@ -22,7 +22,7 @@ AI labs as structured or raw data for use in generative or language engine optim
 has a RESTful interface that accepts `GET` requests at **https://&zwj;{apiEndpoint}/ai**.
 
 Conversations can be localized with <Link href='geotargeting'>geotargeting parameters</Link>.
-They're conducted live by default or optionally queued for <Link href='scheduling'>subsequent
+They're had live by default or optionally queued for <Link href='scheduling'>subsequent
 retrieval</Link>. Live conversations take an average of several seconds but may require multiple
 retries, in which case up to **3 minutes** is allocated per API call. <Link href='usage'>Usage
 data</Link> is published regularly.
@@ -83,17 +83,17 @@ If you set the output to JSON, your completion will be parsed into an object wit
 [geotargeting keys and values](#usage) above and following chat keys and values:
 
 | Key                  | Value                                                                                                                                                                                                                                                                                                                                                  |
-| :------------------- | :------------------------------------------------------------------------------------------------------- |
-| `model`              | The AI model that responded                                                                              |
-| `prompt`             | The user prompt that was responded to                                                                    |
-| `html`               | The rendered HTML of the entire conversation                                                             |
-| `promptHtml`         | The rendered HTML of just the prompt portion of the conversation                                         |
-| `completionHtml`     | The rendered HTML of just the completion portion of the conversation                                     |
-| `sourcesHtml`        | The rendered HTML of just the sources portion of the conversation                                        |
-| `queries`            | An array of the fanout queries that the model searched to respond; only some models expose these queries |
-| `device` (planned)   | The emulated device name that the conversation was had on                                                |
-| `language` (planned) | The common name or ISO code of the language that the conversation is in                                  |
-| `display` (planned)  | The common name or ISO code of the display language that conversation interface is in                    |
+| :------------------- | :------------------------------------------------------------------------------------------------------------- |
+| `model`              | The AI model that responded                                                                                    |
+| `prompt`             | The user prompt that was responded to                                                                          |
+| `html`               | The rendered HTML of the entire conversation                                                                   |
+| `promptHtml`         | The rendered HTML of just the prompt portion of the conversation                                               |
+| `completionHtml`     | The rendered HTML of just the completion portion of the conversation                                           |
+| `sourcesHtml`        | The rendered HTML of just the sources portion of the conversation                                              |
+| `queries`            | An array of the fanout queries that the model searched while responding; only some models expose these queries |
+| `device` (planned)   | The emulated device name that the conversation was had on                                                      |
+| `language` (planned) | The common name or ISO code of the language that the conversation is in                                        |
+| `display` (planned)  | The common name or ISO code of the display language that conversation interface is in                          |
 
 <Accordion icon='code' title='View JSON example'>
   <Json />
