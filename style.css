@@ -6,13 +6,20 @@
   background-color: #1a202c !important;
 }
 
-#content-area a, #content-area a:visited {
-  color: #4a6de5;
+@media (min-width: 1024px) {
+  .lg\:pl-\[5\.5rem\] {
+    padding-left: 3.5rem;
+  }
 }
 
-table th:not(:last-child), table td:not(:last-child) {
-  min-width: 0;
-  white-space: nowrap;
+.max-w-\[28rem\] {
+  max-width: 25rem;
+}
+
+@media (min-width: 1280px) {
+  .xl\:w-\[28rem\] {
+    width: 25rem;
+  }
 }
 
 [data-callout-type="info"] {
@@ -22,6 +29,11 @@ table th:not(:last-child), table td:not(:last-child) {
 
 [data-callout-type="info"] svg {
   color: rgb(14 165 233 / 1);
+}
+
+table th:not(:last-child), table td:not(:last-child) {
+  min-width: 0;
+  white-space: nowrap;
 }
 
 .latex-style {
@@ -38,4 +50,8 @@ footer {
 
 footer > div:nth-of-type(2) {
   visibility: hidden;
+}
+
+#content-area a, #content-area a:visited {
+  color: #4a6de5;
 }
