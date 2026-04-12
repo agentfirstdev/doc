@@ -185,6 +185,125 @@
         }
       }
     },
+    "/ai": {
+      "get": {
+        "summary": "Completion",
+        "description": "Retrieve an LLM completion or queue a completion for later retrieval.",
+        "parameters": [
+          {
+            "name": "prompt",
+            "description": "The question or instruction of up to 2,047 characters to use as a chat prompt; the prompt requires [form or URL encoding](https://developer.mozilla.org/en-US/docs/Glossary/Percent-encoding) (with any space character being replaced by a `+` character or `%20` sequence).",
+            "schema": { "type": "string", "example": "best basketball shoes for 2026" },
+            "in": "query",
+            "required": true
+          },
+          {
+            "name": "model",
+            "description": "The AI model to chat with.",
+            "schema": {
+              "type": "string",
+              "enum": ["chatgpt", "gemini", "perplexity (coming soon)", "copilot (coming soon)"],
+              "default": "chatgpt",
+              "example": "gemini"
+            },
+            "in": "query"
+          },
+          {
+            "name": "device",
+            "description": "The name as returned by the [devices resource](ai/devices) of the device to emulate chatting on (these names are case insensitive but must include form- or URL-encoded spaces and punctuation marks); device emulation is unused by default.",
+            "schema": { "type": "string", "example": null },
+            "in": "query"
+          },
+          {
+            "name": "country",
+            "description": "The [two-letter ISO code](https://www.iso.org/obp/ui/#search/code) of the country to chat from (these codes are case insensitive); a random country is used by default.",
+            "schema": { "type": "string", "example": null },
+            "in": "query"
+          },
+          {
+            "name": "subdivision",
+            "description": "The alphanumeric second part (proceeding the separator) of a [first-level subdivision code](https://www.iso.org/obp/ui/#search/code) in the (prerequisite) country to chat from (these codes are case insensitive); a random subdivision is used by default.",
+            "schema": { "type": "string", "example": null },
+            "in": "query"
+          },
+          {
+            "name": "city",
+            "description": "The [commonly spelled name](https://www.geonames.org/) of the city in the (prerequisite) country to chat from (these names are temporarily case sensitive and required to include form- or URL-encoded spaces and punctuation marks); a random city is used by default.",
+            "schema": { "type": "string", "example": null },
+            "in": "query"
+          },
+          {
+            "name": "language (planned)",
+            "description": "The commonly spelled name or [two-letter ISO code](https://www.loc.gov/standards/iso639-2/php/code_list.php) of the language to chat in (these names and codes are case insensitive but required to include form- or URL-encoded spaces and punctuation marks); the language is unset by default.",
+            "schema": { "type": "string", "example": null },
+            "in": "query"
+          },
+          {
+            "name": "display (planned)",
+            "description": "The commonly spelled name or [two-letter ISO code](https://www.loc.gov/standards/iso639-2/php/code_list.php) of the chat interface’s display language (these names and codes are case insensitive but required to include form- or URL-encoded spaces and punctuation marks); the display language is unset by default or set to the language if given.",
+            "schema": { "type": "string", "example": null },
+            "in": "query"
+          },
+          {
+            "name": "format",
+            "description": "The format to output to.",
+            "schema": {
+              "type": "string",
+              "enum": ["json", "rendered", "raw"],
+              "default": "json",
+              "example": "rendered"
+            },
+            "in": "query"
+          },
+          {
+            "name": "expiration",
+            "description": "The age in days of when to consider a cached completion expired, where `0` disables caching.",
+            "schema": { "type": "integer", "minimum": 0, "maximum": 1, "default": 1, "example": 0 },
+            "in": "query"
+          },
+          {
+            "name": "mode",
+            "description": "The synchronous or asynchronous mode of completion retrieval (see the [async resource](ai/completions)).",
+            "schema": { "$ref": "#/components/schemas/Mode" },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The AI completion.",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Completion" } },
+              "text/html": { "schema": { "type": "string" } }
+            }
+          },
+          "202": {
+            "description": "A job identifier.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "description": "The identifier to retrieve the queued conversation with.",
+                      "type": "string",
+                      "example": "1851dab8-4619-409f-893f-47dd3a180bc3"
+                    }
+                  },
+                  "required": ["id"]
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/authenticationError" },
+          "402": { "$ref": "#/components/responses/creditsError" },
+          "422": { "$ref": "#/components/responses/paramsError" },
+          "504": { "$ref": "#/components/responses/timeoutError" },
+          "403": { "$ref": "#/components/responses/captchaError" },
+          "503": { "$ref": "#/components/responses/unavailableError" },
+          "500": { "$ref": "#/components/responses/unknownError" }
+        }
+      }
+    },
     "/ai/completions": {
       "get": {
         "summary": "Async completions",
