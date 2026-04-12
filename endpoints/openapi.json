@@ -16,7 +16,7 @@
           {
             "name": "terms",
             "description": "The broad or exact word or phrase of up to 255 characters to query (e.g., `foo bar baz` or `\"foo bar baz\"`); the terms require [form or URL encoding](https://developer.mozilla.org/en-US/docs/Glossary/Percent-encoding) (with any space character being replaced by a `+` character or `%20` sequence).",
-            "schema": { "type": "string", "example": "foo" },
+            "schema": { "type": "string", "example": "foo bar baz" },
             "in": "query",
             "required": true
           },
@@ -42,12 +42,6 @@
             "name": "offset",
             "description": "The number of initial results to skip; results aren’t offset by default.",
             "schema": { "type": "integer", "minimum": 0, "maximum": 100, "example": null },
-            "in": "query"
-          },
-          {
-            "name": "ip",
-            "description": "The type of IP address to search from; a random IP type is used by default.",
-            "schema": { "type": "string", "enum": ["residential", "isp"], "example": null },
             "in": "query"
           },
           {
@@ -84,17 +78,6 @@
             "name": "display",
             "description": "The commonly spelled name, [two-letter ISO code](https://www.loc.gov/standards/iso639-2/php/code_list.php), or [Google code](https://www.google.com/advanced_search) of the search interface’s display language (these names and codes are case insensitive but required to include form- or URL-encoded spaces and punctuation marks); the display language is unset by default or set to the language if given.",
             "schema": { "type": "string", "example": null },
-            "in": "query"
-          },
-          {
-            "name": "format",
-            "description": "The format to output to.",
-            "schema": {
-              "type": "string",
-              "enum": ["html", "json"],
-              "default": "html",
-              "example": "json"
-            },
             "in": "query"
           },
           {
@@ -415,16 +398,6 @@
             "name": "device",
             "description": "The name as returned by the [devices resource](browser/devices) of the device to emulate browsing on (these names are case insensitive but must include form- or URL-encoded spaces and punctuation marks); device emulation is unused by default.",
             "schema": { "type": "string", "example": null },
-            "in": "query"
-          },
-          {
-            "name": "ip",
-            "description": "The type of IP address to browse from; a random IP type is used by default.",
-            "schema": {
-              "type": "string",
-              "enum": ["residential", "isp", "datacenter (planned)"],
-              "example": null
-            },
             "in": "query"
           },
           {
