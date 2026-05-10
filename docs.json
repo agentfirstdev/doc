@@ -30,7 +30,11 @@
               },
               {
                 "group": "AI",
-                "pages": ["endpoints/reference/ai", "endpoints/reference/ai/devices"]
+                "pages": [
+                  "endpoints/reference/ai",
+                  "endpoints/reference/ai/completions",
+                  "endpoints/reference/ai/devices"
+                ]
               },
               {
                 "group": "Browsing",
