@@ -81,6 +81,16 @@
             "in": "query"
           },
           {
+            "name": "url",
+            "description": "The encoded URL of the results page to retrieve; if given, the URL overrides any of the above params.",
+            "schema": {
+              "type": "string",
+              "format": "uri",
+              "example": "https://www.google.com/search?q=foo+bar+baz&hl=fr&gl=fr&ie=UTF-8"
+            },
+            "in": "query"
+          },
+          {
             "name": "awaiting",
             "description": "The lazy result features to wait to load; any AI overview, which can take significant time to generate, is awaited for a maximum of **1 minute**; multiple features can be provided by repeating the key; lazy results aren’t awaited by default.",
             "schema": { "type": "string", "enum": ["ai", "answers", "ads"], "example": "ai" },
@@ -393,7 +403,7 @@
             "description": "The difficulty pool to attempt to access the URL from.",
             "schema": {
               "type": "string",
-              "enum": ["low", "medium", "high (planned)"],
+              "enum": ["low", "medium", "high"],
               "default": "low",
               "example": "low"
             },
@@ -1196,7 +1206,12 @@
             "type": "string",
             "example": "<div class=\"border-token-border-default mt-2 border-t py-4 text-sm\" ..."
           },
-          "fanouts": {
+          "sse (ChatGPT only)": {
+            "description": "The server-sent events JSON that was used to populate the conversation HTML.",
+            "type": "string",
+            "example": "{\"type\": \"conversation_detail_metadata\" ..."
+          },
+          "fanouts (ChatGPT only)": {
             "description": "The fanout queries that the model searched to generate the completion; only some models expose these queries.",
             "type": "array",
             "items": { "type": "string" },
@@ -1249,6 +1264,7 @@
           "completion",
           "sources",
           "ads",
+          "sse",
           "fanouts"
         ]
       },
@@ -1342,7 +1358,7 @@
           "text/plain": {
             "schema": {
               "type": "string",
-              "example": "Service is autoscaling; please retry in 180 seconds"
+              "example": "Service is autoscaling; please retry in 60 seconds"
             }
           }
         }
