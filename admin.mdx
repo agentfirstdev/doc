@@ -8,7 +8,8 @@ description: Create and manage user accounts.
 import { companyName, apiEndpoint } from '/snippets/whitelabel/config.mdx';
 import { Throttling } from '/snippets/whitelabel/throttling.mdx';
 import Authentication from '/snippets/whitelabel/authentication.mdx';
-import Email from '/snippets/administration/email.mdx';
+import Creation from '/snippets/administration/creation.mdx';
+import Deactivation from '/snippets/administration/deactivation.mdx';
 
 <Info>
   See also the <Link href='endpoints/reference/users'>API reference</Link> for more detail.
@@ -17,40 +18,67 @@ import Email from '/snippets/administration/email.mdx';
 ## Usage
 
 **{companyName}'s** administration service lets you support your whitelabel customers. The service
-has a RESTful interface that accepts `GET`, `POST`, and `PATCH` requests at
+has a RESTful interface that accepts `GET`, `POST`, `PATCH`, and `DELETE` requests at
 **https://&zwj;{apiEndpoint}/users**.
 
 <Throttling />
 
 ### New customers
 
-You can provision a user by specifying their email address and the API services to assign them
-access permission:
+You can provision a user by specifying their email address and optional API credits:
 
-<Email />
+<Creation />
 
-The user's secret API token will be returned, along with their normalized email address and service
-permissions:
+The user's secret API token will be returned, along with their normalized email address and initial
+credits:
 
 ```json
 {
   "email": "user@example.com",
   "token": "a1-0dF6qKHYD7SNU5kAtjOmwHpH3iFgpylA",
-  "services": ["search", "browser"]
+  "credits": 1000
 }
 ```
 
 Here are the provisioning request keys and values:
 
-| Key        | Required | Value                                                                                                                                                     |
-| :--------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `email`    | ✅       | The email address of the user to create an account for; the address is case insensitive and can be up to 255 characters, regardless of character encoding |
-| `services` | ✅       | An array of at least one of the API services to grant the account access to; the possible service values are `search` and `browser`                       |
+| Key       | Required | Value                                                                                                                                                     |
+| :-------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `email`   | ✅       | The email address of the user to create an account for; the address is case insensitive and can be up to 255 characters, regardless of character encoding |
+| `credits` |          | The number of API credits to initially grant the account                                                                                                  |
 
 Here are the response keys and values:
 
-| Key        | Value                                                                                                                      |
-| :--------- | :------------------------------------------------------------------------------------------------------------------------- |
-| `email`    | The email address of the new user account as recorded by the API                                                           |
-| `token`    | The bearer token issued by the API for authentication                                                                      |
-| `services` | An array of the API services that the account has been granted access to, `search` and `browser` being the possible values |
+| Key       | Value                                                            |
+| :-------- | :--------------------------------------------------------------- |
+| `email`   | The user email address of the new account as recorded by the API |
+| `token`   | The bearer token issued by the API for authentication            |
+| `credits` | The number of API credits granted to the account                 |
+
+### Customer deactivation
+
+Disable an account with just an email address:
+
+<Deactivation />
+
+The API will confirm that account no longer has credits:
+
+```json
+{
+  "email": "user@example.com",
+  "credits": 0
+}
+```
+
+This is the deprovisioning request key and value:
+
+| Key       | Required | Value                                                                        |
+| :-------- | :------- | :--------------------------------------------------------------------------- |
+| `email`   | ✅       | The (case-insensitive) email address of the user whose account to deactivate |
+
+These are the response keys and values:
+
+| Key       | Value                                             |
+| :-------- | :------------------------------------------------ |
+| `email`   | The email address of the deactivated user account |
+| `credits` | The confirmed zeroed-out API credits              |
