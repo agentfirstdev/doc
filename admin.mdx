@@ -25,11 +25,11 @@ has a RESTful interface that accepts `GET`, `POST`, `PATCH`, and `DELETE` reques
 
 ### New customers
 
-You can provision a user by specifying their email address and optional API credits:
+You can provision a user by specifying their email address and, optionally, initial API credits:
 
 <Creation />
 
-The user's secret API token will be returned, along with their normalized email address and initial
+The user's secret API token will be returned, along with their normalized email address and any
 credits:
 
 ```json
@@ -45,19 +45,19 @@ Here are the provisioning request keys and values:
 | Key       | Required | Value                                                                                                                                                     |
 | :-------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `email`   | ✅       | The email address of the user to create an account for; the address is case insensitive and can be up to 255 characters, regardless of character encoding |
-| `credits` |          | The number of API credits to initially grant the account                                                                                                  |
+| `credits` |          | The number of API credits to seed the account with                                                                                                        |
 
 Here are the response keys and values:
 
 | Key       | Value                                                            |
 | :-------- | :--------------------------------------------------------------- |
 | `email`   | The user email address of the new account as recorded by the API |
-| `token`   | The bearer token issued by the API for authentication            |
-| `credits` | The number of API credits granted to the account                 |
+| `token`   | The bearer token issued to the account for authentication        |
+| `credits` | The initial number of API credits granted to the account         |
 
 ### Customer deactivation
 
-Disable an account with just an email address:
+Disable an account with just the account's email address:
 
 <Deactivation />
 
