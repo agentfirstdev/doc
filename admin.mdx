@@ -25,7 +25,8 @@ has a RESTful interface that accepts `GET`, `POST`, `PATCH`, and `DELETE` reques
 
 ### New customers
 
-You can provision a user by specifying their email address and, optionally, initial API credits:
+You can provision a user by specifying their email address and, optionally, the API credits to
+preload their account with:
 
 <Creation />
 
@@ -45,19 +46,19 @@ Here are the provisioning request keys and values:
 | Key       | Required | Value                                                                                                                                                     |
 | :-------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `email`   | ✅       | The email address of the user to create an account for; the address is case insensitive and can be up to 255 characters, regardless of character encoding |
-| `credits` |          | The number of API credits to seed the account with                                                                                                        |
+| `credits` |          | The number of API credits to preload the account with                                                                                                     |
 
 Here are the response keys and values:
 
-| Key       | Value                                                            |
-| :-------- | :--------------------------------------------------------------- |
-| `email`   | The user email address of the new account as recorded by the API |
-| `token`   | The bearer token issued to the account for authentication        |
-| `credits` | The initial number of API credits granted to the account         |
+| Key       | Value                                                       |
+| :-------- | :---------------------------------------------------------- |
+| `email`   | The email address of the new account as recorded by the API |
+| `token`   | The bearer token issued to the account for authentication   |
+| `credits` | The number of initial API credits granted to the account    |
 
 ### Customer deactivation
 
-Disable an account with just the account's email address:
+Disable an account with the associated email address:
 
 <Deactivation />
 
@@ -78,7 +79,7 @@ This is the deprovisioning request key and value:
 
 These are the response keys and values:
 
-| Key       | Value                                             |
-| :-------- | :------------------------------------------------ |
-| `email`   | The email address of the deactivated user account |
-| `credits` | The confirmed zeroed-out API credits              |
+| Key       | Value                                          |
+| :-------- | :--------------------------------------------- |
+| `email`   | The email address of the deactivated account   |
+| `credits` | The zeroed-out credits as confirmed by the API |
